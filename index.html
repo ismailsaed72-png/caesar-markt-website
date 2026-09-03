@@ -1,0 +1,260 @@
+ <!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caesar Markt Neumünster - قيصر ماركت</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background-color: #0d1b2a; color: #ffffff; }
+
+        /* الشريط العلوي */
+        .top-bar {
+            background-color: #c5a059;
+            color: #000;
+            text-align: center;
+            padding: 8px 10px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* الهيدر والشعار */
+        header {
+            background-color: #0b131f;
+            border-bottom: 2px solid #c5a059;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-title h1 {
+            color: #c5a059;
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+
+        .logo-title p {
+            color: #ccc;
+            font-size: 12px;
+        }
+
+        .lang-select select {
+            padding: 6px 12px;
+            border-radius: 4px;
+            background-color: #1b263b;
+            color: #fff;
+            border: 1px solid #c5a059;
+            cursor: pointer;
+        }
+
+        /* القائمة الرئيسية */
+        nav {
+            background-color: #1b263b;
+            padding: 12px 5%;
+            border-bottom: 1px solid #334155;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav ul li a:hover {
+            color: #c5a059;
+        }
+
+        /* شبكة الأقسام الـ 25 */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 28px;
+            color: #c5a059;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #1b263b;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #c5a059;
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background-color: #0b131f;
+        }
+
+        .card h3 {
+            padding: 12px;
+            font-size: 15px;
+        }
+
+        /* الفوتر */
+        footer {
+            background-color: #060c14;
+            color: #ccc;
+            padding: 40px 5% 20px 5%;
+            margin-top: 50px;
+            border-top: 2px solid #c5a059;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h4 {
+            color: #c5a059;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 5px;
+        }
+
+        .footer-col p, .footer-col li {
+            font-size: 14px;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .footer-col a {
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #1b263b;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        نقبل الحجز والتوصيل إلى المنزل في حدود المدينة (الحد الأدنى للطلب 40 يورو)
+    </div>
+
+    <header>
+        <div class="logo-box">
+            <div class="logo-title">
+                <h1>CAESAR MARKT</h1>
+                <p>Orientalische Lebensmittel, Fleischerei, Shisha, Tabak und Vapes</p>
+            </div>
+        </div>
+        <div class="lang-select">
+            <select>
+                <option>العربية (Arabic)</option>
+                <option>Deutsch (German)</option>
+                <option>Türkçe (Turkish)</option>
+            </select>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">الرئيسية</a></li>
+            <li><a href="#">المتجر</a></li>
+            <li><a href="#">تسوق</a></li>
+            <li><a href="#">من نحن</a></li>
+            <li><a href="#">اتصل بنا</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2 class="section-title">الأقسام الرئيسية</h2>
+        <div class="grid">
+            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400" alt="خضار"><h3>1. الخضار الطازجة</h3></a>
+            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1528751014936-863e6e7a319c?w=400" alt="أجبان"><h3>2. الأجبان والألبان</h3></a>
+            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=400" alt="لحوم"><h3>3. اللحوم الطازجة (Fleischerei)</h3></a>
+            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1599940824399-b87987ceb72a?w=400" alt="مخللات"><h3>4. المقبلات والمخللات</h3></a>
+            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400" alt="حبوب"><h3>5. البقوليات والحبوب</h3></a>
+            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400" alt="مجمدات"><h3>6. المجمدات</h3></a>
+            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1534483509719-3feaee7c30da?w=400" alt="معلبات"><h3>7. المعلبات العامة</h3></a>
+            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400" alt="عصائر"><h3>8. العصائر والمشروبات</h3></a>
+            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400" alt="بهارات"><h3>9. البهارات والتوابل</h3></a>
+            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1536591375315-1989914b3d7a?w=400" alt="مكسرات"><h3>10. المكسرات والمحمصات</h3></a>
+            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=400" alt="فواكه"><h3>11. الفواكه الطازجة</h3></a>
+            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1527016016007-57a1990621cd?w=400" alt="شيشة وتوابعها"><h3>12. Shisha, Tabak und Vapes</h3></a>
+            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1582293041079-7814c2f12063?w=400" alt="بسكويت"><h3>13. البسكويت والشوكولاتة</h3></a>
+            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400" alt="خبز"><h3>14. المخبوزات والخبز</h3></a>
+            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400" alt="زيوت"><h3>15. زيوت الطبخ والزيتون</h3></a>
+            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=400" alt="صلصة"><h3>16. معجون الصلصة والصوصات</h3></a>
+            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400" alt="قهوة وشاي"><h3>17. القهوة والشاي</h3></a>
+            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1534483509719-3feaee7c30da?w=400" alt="أسماك معلبة"><h3>18. الأسماك المعلبة</h3></a>
+            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400" alt="حلويات"><h3>19. الحلويات الشرقية</h3></a>
+            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1585421514284-efb74c2b69ba?w=400" alt="منظفات"><h3>20. مواد التنظيف</h3></a>
+            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400" alt="عسل"><h3>21. عسل النحل الطبيعي</h3></a>
+            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=400" alt="سمن"><h3>22. السمن البلدي والنباتي</h3></a>
+            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?w=400" alt="أسماك مجمدة"><h3>23. الأسماك المجمدة</h3></a>
+            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=400" alt="تمور"><h3>24. التمور والفواكه المجففة</h3></a>
+            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1582293041079-7814c2f12063?w=400" alt="حلويات أطفال"><h3>25. حلويات الأطفال والكاشير</h3></a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>مواعيد العمل (Öffnungszeiten)</h4>
+                <p>Montag – Samstag: 08:30 – 20:00 Uhr</p>
+                <p>Sonntag: Geschlossen (الأحد مغلق)</p>
+            </div>
+            <div class="footer-col">
+                <h4>العنوان والاتصال</h4>
+                <p><strong>CAESAR MARKT</strong></p>
+                <p>Großflecken 19, 24534 Neumünster</p>
+            </div>
+            <div class="footer-col">
+                <h4>معلومات قانونية</h4>
+                <p><a href="#">سياسة الخصوصية (Datenschutz)</a></p>
+                <p><a href="#">بصمة الموقع (Impressum)</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 CAESAR MARKT NEUMÜNSTER - جميع الحقوق محفوظة
+        </div>
+    </footer>
+
+</body>
+</html>
