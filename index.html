@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -16,7 +17,6 @@ button,input,select{font:inherit}button{cursor:pointer}img{max-width:100%;displa
 header{position:sticky;top:0;z-index:1000;background:rgba(4,15,27,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
 .head{width:min(1250px,92%);min-height:86px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:18px}
 .brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:#fff}
-.brand img{width:68px;height:68px;object-fit:contain;filter:drop-shadow(0 5px 15px rgba(244,213,126,.28))}
 .brand h1{font:700 clamp(22px,3vw,31px) Georgia,serif;color:var(--gold2);letter-spacing:.06em}
 .brand p{color:var(--muted);font-size:12px;margin-top:4px}
 .tools{display:flex;gap:8px;align-items:center}
@@ -70,7 +70,7 @@ footer{margin-top:60px;background:#030b13;border-top:1px solid var(--line);paddi
 .product img{width:100%;height:160px;object-fit:cover}
 .product .body{padding:13px}.product h3{font-size:15px;line-height:1.5;min-height:46px}
 .row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px}
-.price{color:var(--gold2);font-weight:900}.add{border:1px solid var(--gold);background:transparent;color:#fff;border-radius:9px;padding:7px 9px}
+.price{color:var(--gold2);font-weight:900}.add{border:1px solid var(--gold);background:transparent;color:#fff;border-radius:99px;padding:7px 12px}
 .add:hover{background:var(--gold);color:#111}
 .drawer{position:fixed;inset:0;z-index:2500;display:none;background:rgba(0,0,0,.7)}
 .drawer.show{display:block}
@@ -82,7 +82,7 @@ html[dir="ltr"] .cartpanel{right:0}html[dir="rtl"] .cartpanel{left:0}
 .toast{position:fixed;z-index:4000;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;background:var(--gold2);color:#111;padding:11px 17px;border-radius:11px;font-weight:800;transition:.3s;pointer-events:none}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 @media(max-width:900px){.categories{grid-template-columns:repeat(2,1fr)}.products{grid-template-columns:repeat(3,1fr)}.foot{grid-template-columns:1fr 1fr}}
-@media(max-width:620px){.head{min-height:75px}.brand img{width:52px;height:52px}.brand p{display:none}.brand h1{font-size:21px}.hero{min-height:430px}.hero .content{padding:25px}.categories,.info,.foot{grid-template-columns:1fr}.products{grid-template-columns:repeat(2,1fr);padding:12px;gap:10px}.product img{height:135px}.modal{padding:6px}.box{max-height:95vh}.heading{display:block}.heading p{margin-top:6px}}
+@media(max-width:620px){.head{min-height:75px}.brand p{display:none}.brand h1{font-size:21px}.hero{min-height:430px}.hero .content{padding:25px}.categories,.info,.foot{grid-template-columns:1fr}.products{grid-template-columns:repeat(2,1fr);padding:12px;gap:10px}.product img{height:135px}.modal{padding:6px}.box{max-height:95vh}.heading{display:block}.heading p{margin-top:6px}}
 </style>
 </head>
 <body>
@@ -91,7 +91,7 @@ html[dir="ltr"] .cartpanel{right:0}html[dir="rtl"] .cartpanel{left:0}
 <header>
  <div class="head">
   <a class="brand" href="#" onclick="home(event)">
-   <svg width="50" height="50" viewBox="0 0 100 100" fill="#d9ae52"><path d="M10 80 L90 80 L85 30 L65 50 L50 20 L35 50 L15 30 Z"/><circle cx="50" cy="12" r="5"/><circle cx="15" cy="22" r="4"/><circle cx="85" cy="22" r="4"/></svg>
+   <svg width="45" height="45" viewBox="0 0 100 100" fill="#d9ae52"><path d="M10 80 L90 80 L85 30 L65 50 L50 20 L35 50 L15 30 Z"/><circle cx="50" cy="12" r="5"/><circle cx="15" cy="22" r="4"/><circle cx="85" cy="22" r="4"/></svg>
    <div><h1>CAESAR MARKT</h1><p id="brandSub"></p></div>
   </a>
   <div class="tools">
@@ -164,75 +164,138 @@ const I={
  rice:["https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=900&q=80","https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=900&q=80"],
  olives:["https://images.unsplash.com/photo-1599940824399-b87987ceb72a?auto=format&fit=crop&w=900&q=80","https://images.unsplash.com/photo-1601314002592-28f17c1a9f57?auto=format&fit=crop&w=900&q=80"]
 };
+
 const base=[
- ["veg","vegetables",["طماطم طازجة","خيار بلدي","نعناع طازج","بقدونس طازج","باذنجان","فلفل أخضر","كوسا","بطاطا","بصل أحمر","ليمون طازج"],["1.99 € / كغ","1.49 € / كغ","0.79 € / باقة","0.79 € / باقة","2.49 € / كغ","2.99 € / كغ","2.29 € / كغ","1.69 € / كغ","1.59 € / كغ","2.49 € / كغ"]],
+ ["veg","veg",["طماطم طازجة","خيار بلدي","نعناع طازج","بقدونس طازج","باذنجان","فلفل أخضر","كوسا","بطاطا","بصل أحمر","ليمون طازج"],["1.99 € / كغ","1.49 € / كغ","0.79 € / باقة","0.79 € / باقة","2.49 € / كغ","2.99 € / كغ","2.29 € / كغ","1.69 € / كغ","1.59 € / كغ","2.49 € / كغ"]],
  ["cheese","cheese",["جبنة حلوم","لبنة","جبنة بيضاء","جبنة عكاوي","قشقوان","فيتا","زبادي طبيعي","عيران","قشطة","زبدة بلدية"],["3.49 €","2.99 €","4.99 € / كغ","6.99 € / كغ","7.99 € / كغ","3.49 €","1.79 €","1.49 €","2.99 €","3.99 €"]],
  ["meat","meat",["صدر دجاج 10 كغ","لحم خاروف بعظمه","لحم عجل مفروم","أفخاذ دجاج","أجنحة دجاج","ريش خاروف","لحم عجل شرائح","كفتة","سجق شرقي","كبدة عجل"],["59.99 €","12.99 € / كغ","9.99 € / كغ","5.99 € / كغ","4.99 € / كغ","16.99 € / كغ","13.99 € / كغ","11.99 € / كغ","10.99 € / كغ","9.99 € / كغ"]],
- ["shisha","shisha",["معسل تفاحتين","معسل نعناع","معسل عنب","فحم نرجيلة طبيعي","رؤوس شيشة","ملقط فحم","خرطوم شيشة","فيب سحبة جاهزة","نكهات شيشة","إكسسوارات شيشة"],["17.90 €","17.90 €","17.90 €","6.50 €","4.99 €","2.99 €","7.99 €","9.99 €","17.90 €","ابتداءً من 3.99 €"]],
+ ["shisha","shisha",["معسل تفاحتين","معسل نعناع","معسل عنب","فحم نرجيلة طبيعي","رؤوس شيشة","ملقط فحم","خرطوم شيشة","فيب سحبة جاهزة","نكهات شيشة","إكسسوارات شيشة"],["17.90 €","17.90 €","17.90 €","6.50 €","4.99 €","2.99 €","7.99 €","9.99 €","17.90 €","3.99 €"]],
  ["rice","rice",["أرز بسمتي 5 كغ","عدس أحمر 1 كغ","حمص حب 1 كغ","فاصوليا بيضاء 1 كغ","برغل ناعم 1 كغ","برغل خشن 1 كغ","أرز مصري 1 كغ","فول يابس 1 كغ","عدس أخضر 1 كغ","فريكة 1 كغ"],["11.99 €","2.29 €","2.49 €","3.49 €","2.49 €","2.49 €","2.29 €","2.79 €","2.69 €","4.99 €"]],
  ["olives","olives",["مخلل خيار","مقدوس باذنجان","زيتون أخضر","زيتون أسود","زيتون أخضر محشو","ورق عنب","فلفل مخلل","لفت مخلل","طرشي مشكل","زيتون كالاماتا"],["2.99 €","4.50 €","3.99 € / كغ","4.49 € / كغ","5.49 € / كغ","3.99 €","2.99 €","2.49 €","3.99 €","5.99 € / كغ"]]
 ];
+
 const T={
-ar:{announcement:"التوصيل داخل Neumünster متاح — الحد الأدنى 40 €",sub:"أغذية شرقية • ملحمة • شيشة • تبغ • Vapes",nav:["الرئيسية","المتجر","من نحن","اتصل بنا"],cart:"السلة",badge:"مرحباً بكم في قيصر ماركت",hero:"جودة شرقية بطابع ملكي",text:"تصفح أقسامنا الرئيسية واضغط على أي قسم لفتح 10 منتجات فرعية مع الصور والأسعار.",shop:"تصفح المنتجات",contact:"تواصل معنا",title:"الأقسام الرئيسية",hint:"اضغط على القسم لعرض المنتجات • استخدم البحث للوصول السريع",search:"ابحث عن منتج أو قسم...",about:"من نحن",aboutText:"Caesar Markt Neumünster متخصص في المنتجات الشرقية والخضار الطازجة والأجبان واللحوم والبقوليات والمخللات ومنتجات الشيشة والتبغ.",contactTitle:"العنوان والاتصال",contactText:"Großflecken 19, 24534 Neumünster — للتوصيل والحجز تواصل مع المتجر مباشرة.",hours:"مواعيد العمل",hoursText:"الاثنين – السبت: 08:30 – 20:00<br>الأحد: مغلق",address:"العنوان",service:"الخدمة",serviceText:"توصيل داخل المدينة — الحد الأدنى للطلب 40 €.",rights:"جميع الحقوق محفوظة",add:"إضافة",added:"تمت إضافة المنتج إلى السلة",cartTitle:"سلة الطلب",checkout:"إرسال الطلب عبر WhatsApp",empty:"السلة فارغة حالياً.",count:"10 منتجات"},
-de:{announcement:"Lieferung in Neumünster — Mindestbestellwert 40 €",sub:"Orientalische Lebensmittel • Fleischerei • Shisha • Tabak • Vapes",nav:["Startseite","Geschäft","Über uns","Kontakt"],cart:"Warenkorb",badge:"Willkommen bei Caesar Markt",hero:"Orientalische Qualität mit königlichem Stil",text:"Kategorien öffnen und 10 Unterprodukte mit Bildern und Preisen entdecken.",shop:"Produkte ansehen",contact:"Kontakt",title:"Hauptkategorien",hint:"Kategorie anklicken • Suche für schnellen Zugriff",search:"Produkt oder Kategorie suchen...",about:"Über uns",aboutText:"Caesar Markt Neumünster bietet orientalische Lebensmittel, frisches Gemüse, Käse, Fleisch, Hülsenfrüchte, Feinkost sowie Shisha- und Tabakwaren.",contactTitle:"Adresse & Kontakt",contactText:"Großflecken 19, 24534 Neumünster — für Lieferung und Bestellung direkt den Markt kontaktieren.",hours:"Öffnungszeiten",hoursText:"Montag – Samstag: 08:30 – 20:00 Uhr<br>Sonntag: Geschlossen",address:"Adresse",service:"Service",serviceText:"Lieferung im Stadtgebiet — Mindestbestellwert 40 €.",rights:"Alle Rechte vorbehalten",add:"Hinzufügen",added:"Produkt wurde zum Warenkorb hinzugefügt",cartTitle:"Bestellkorb",checkout:"Bestellung per WhatsApp senden",empty:"Der Warenkorb ist leer.",count:"10 Produkte"},
-tr:{announcement:"Neumünster şehir içi teslimat — minimum 40 €",sub:"Doğu Gıdaları • Kasap • Nargile • Tütün • Vape",nav:["Ana Sayfa","Mağaza","Hakkımızda","İletişim"],cart:"Sepet",badge:"Caesar Markt'a Hoş Geldiniz",hero:"Kraliyet tarzında doğu lezzetleri",text:"Ana kategorileri açın ve görsel/fiyatlarla 10 alt ürünü keşfedin.",shop:"Ürünleri Gör",contact:"İletişim",title:"Ana Kategoriler",hint:"Kategoriye tıklayın • hızlı erişim için aramayı kullanın",search:"Ürün veya kategori ara...",about:"Hakkımızda",aboutText:"Caesar Markt Neumünster; doğu gıdaları, taze sebzeler, peynir, et, bakliyat, turşu, zeytin ve nargile-tütün ürünleri sunar.",contactTitle:"Adres & İletişim",contactText:"Großflecken 19, 24534 Neumünster — teslimat ve sipariş için mağazayla iletişime geçin.",hours:"Çalışma Saatleri",hoursText:"Pazartesi – Cumartesi: 08:30 – 20:00<br>Pazar: Kapalı",address:"Adres",service:"Hizmet",serviceText:"Şehir içi teslimat — minimum sipariş 40 €.",rights:"Tüm hakları saklıdır",add:"Ekle",added:"Ürün sepete eklendi",cartTitle:"Sepet",checkout:"WhatsApp ile sipariş gönder",empty:"Sepet boş.",count:"10 ürün"}
+ar:{announcement:"التوصيل داخل Neumünster متاح — الحد الأدنى 40 €",sub:"أغذية شرقية • ملحمة • شيشة • تبغ • Vapes",nav:["الرئيسية","المتجر","من نحن","اتصل بنا"],cart:"السلة",badge:"مرحباً بكم في قيصر ماركت",hero:"جودة شرقية بطابع ملكي",text:"تصفح الأقسام واضغط على أي قسم لعرض كافة المنتجات والأسعار وإضافتها للسلة.",shop:"تصفح المنتجات",contact:"تواصل معنا",title:"الأقسام الرئيسية",hint:"اضغط على القسم لعرض المنتجات الفرعية",search:"ابحث عن منتج أو قسم...",about:"من نحن",aboutText:"Caesar Markt Neumünster متخصص في المنتجات الشرقية والخضار الطازجة والأجبان واللحوم والبقوليات والمخللات ومنتجات الشيشة والتبغ.",contactTitle:"العنوان والاتصال",contactText:"Großflecken 19, 24534 Neumünster — للتوصيل والحجز تواصل معنا عبر واتساب.",hours:"مواعيد العمل",hoursText:"الاثنين – السبت: 08:30 – 20:00<br>الأحد: مغلق",address:"العنوان",service:"الخدمة",serviceText:"توصيل داخل المدينة — الحد الأدنى للطلب 40 €.",rights:"جميع الحقوق محفوظة",add:"إضافة للسلة",added:"تمت إضافة المنتج إلى السلة",cartTitle:"سلة الطلب",checkout:"إرسال الطلب عبر WhatsApp",empty:"السلة فارغة حالياً.",count:"10 منتجات"},
+de:{announcement:"Lieferung in Neumünster — Mindestbestellwert 40 €",sub:"Orientalische Lebensmittel • Fleischerei • Shisha • Tabak • Vapes",nav:["Startseite","Geschäft","Über uns","Kontakt"],cart:"Warenkorb",badge:"Willkommen bei Caesar Markt",hero:"Orientalische Qualität mit königlichem Stil",text:"Kategorien anklicken und Produkte mit Preisen entdecken.",shop:"Produkte ansehen",contact:"Kontakt",title:"Hauptkategorien",hint:"Kategorie anklicken um Produkte zu sehen",search:"Produkt suchen...",about:"Über uns",aboutText:"Caesar Markt Neumünster bietet orientalische Lebensmittel, frisches Gemüse, Käse, Fleisch und Shisha-Artikel.",contactTitle:"Adresse & Kontakt",contactText:"Großflecken 19, 24534 Neumünster",hours:"Öffnungszeiten",hoursText:"Montag – Samstag: 08:30 – 20:00 Uhr<br>Sonntag: Geschlossen",address:"Adresse",service:"Service",serviceText:"Lieferung im Stadtgebiet — Mindestbestellwert 40 €.",rights:"Alle Rechte vorbehalten",add:"Hinzufügen",added:"Produkt hinzugefügt",cartTitle:"Bestellkorb",checkout:"Bestellung per WhatsApp senden",empty:"Der Warenkorb ist leer.",count:"10 Produkte"},
+tr:{announcement:"Neumünster şehir içi teslimat — minimum 40 €",sub:"Doğu Gıdaları • Kasap • Nargile • Tütün • Vape",nav:["Ana Sayfa","Mağaza","Hakkımızda","İletişim"],cart:"Sepet",badge:"Caesar Markt'a Hoş Geldiniz",hero:"Kraliyet tarzında doğu lezzetleri",text:"Kategorilere tıklayarak ürünleri ve fiyatları inceleyin.",shop:"Ürünleri Gör",contact:"İletişim",title:"Ana Kategoriler",hint:"Alt ürünleri görmek için kategoriye tıklayın",search:"Ürün ara...",about:"Hakkımızda",aboutText:"Caesar Markt Neumünster doğu gıdaları ve nargile ürünleri sunar.",contactTitle:"Adres & İletişim",contactText:"Großflecken 19, 24534 Neumünster",hours:"Çalışma Saatleri",hoursText:"Pazartesi – Cumartesi: 08:30 – 20:00<br>Pazar: Kapalı",address:"Adres",service:"Hizmet",serviceText:"Şehir içi teslimat — minimum 40 €.",rights:"Tüm hakları saklıdır",add:"Ekle",added:"Ürün eklendi",cartTitle:"Sepet",checkout:"WhatsApp ile gönder",empty:"Sepet boş.",count:"10 ürün"}
 };
+
 const NAMES={
 ar:["الخضار الطازجة","الأجبان والألبان","اللحوم الطازجة — ملحمة","شيشة • تبغ • Vapes","البقوليات والحبوب والأرز","المقبلات والمخللات والزيتون"],
 de:["Frisches Gemüse","Käse & Milchprodukte","Fleischerei","Shisha • Tabak • Vapes","Hülsenfrüchte, Getreide & Reis","Feinkost, Oliven & Pickles"],
 tr:["Taze Sebzeler","Peynir & Süt Ürünleri","Kasap","Nargile • Tütün • Vape","Bakliyat, Tahıl & Pirinç","Zeytin, Turşu & Meze"]
 };
+
 let lang=localStorage.getItem("cmLang")||"ar",cart=JSON.parse(localStorage.getItem("cmCart")||"[]");
+
+function el(id){return document.getElementById(id)}
 
 function apply(){
  const t=T[lang]; document.documentElement.lang=lang;document.documentElement.dir=lang==="ar"?"rtl":"ltr";
- const ids={announcement:t.announcement,brandSub:t.sub,nHome:t.nav[0],nShop:t.nav[1],nAbout:t.nav[2],nContact:t.nav[3],cartLabel:t.cart,heroBadge:t.badge,heroTitle:t.hero,heroText:t.text,heroShop:t.shop,heroContact:t.contact,sectionTitle:t.title,hint:t.hint,aboutTitle:t.about,aboutText:t.aboutText,contactTitle:t.contactTitle,contactText:t.contactText,hoursTitle:t.hours,addressTitle:t.address,serviceTitle:t.service,service:t.serviceText,rights:t.rights,cartTitle:t.cartTitle,checkout:t.checkout};
- Object.entries(ids).forEach(([id,v])=>$(id).textContent=v);
- $("hours").innerHTML=t.hoursText;$("search").placeholder=t.search;$("count").textContent=cart.length;
- renderCats($("search").value);
+ el('announcement').textContent=t.announcement;
+ el('brandSub').textContent=t.sub;
+ el('nHome').textContent=t.nav[0];
+ el('nShop').textContent=t.nav[1];
+ el('nAbout').textContent=t.nav[2];
+ el('nContact').textContent=t.nav[3];
+ el('cartLabel').textContent=t.cart;
+ el('heroBadge').textContent=t.badge;
+ el('heroTitle').textContent=t.hero;
+ el('heroText').textContent=t.text;
+ el('heroShop').textContent=t.shop;
+ el('heroContact').textContent=t.contact;
+ el('sectionTitle').textContent=t.title;
+ el('hint').textContent=t.hint;
+ el('aboutTitle').textContent=t.about;
+ el('aboutText').textContent=t.aboutText;
+ el('contactTitle').textContent=t.contactTitle;
+ el('contactText').textContent=t.contactText;
+ el('hoursTitle').textContent=t.hours;
+ el('hours').innerHTML=t.hoursText;
+ el('addressTitle').textContent=t.address;
+ el('serviceTitle').textContent=t.service;
+ el('service').textContent=t.serviceText;
+ el('rights').textContent=t.rights;
+ el('cartTitle').textContent=t.cartTitle;
+ el('checkout').textContent=t.checkout;
+ el('search').placeholder=t.search;
+ el('count').textContent=cart.length;
+ renderCats(el('search').value);
 }
+
 function renderCats(q=""){
  const query=q.trim().toLowerCase();
- $("categories").innerHTML=base.map((c,i)=>{
+ let html="";
+ base.forEach((c,i)=>{
    const name=NAMES[lang][i];
-   if(query && !(name+" "+c[2].join(" ")).toLowerCase().includes(query))return "";
-   return `<article class="cat" onclick="openCategory(${i})"><img src="${I[c[1]][0]}" loading="lazy" alt="${esc(name)}"><div class="shade"><h3>${esc(name)}</h3><span>${T[lang].count} →</span></div></article>`;
- }).join("") || `<p style="color:var(--muted);padding:20px">لا توجد نتائج.</p>`;
+   if(!query || (name+" "+c[2].join(" ")).toLowerCase().includes(query)){
+     html += `<article class="cat" onclick="openCategory(${i})"><img src="${I[c[1]][0]}" loading="lazy" alt="${name}"><div class="shade"><h3>${name}</h3><span>${T[lang].count} →</span></div></article>`;
+   }
+ });
+ el('categories').innerHTML = html || `<p style="color:var(--muted);padding:20px">لا توجد نتائج.</p>`;
 }
+
 function openCategory(i){
  const c=base[i],name=NAMES[lang][i],t=T[lang];
- $("modalTitle").textContent=name;
- $("products").innerHTML=c[2].map((p,j)=>`<article class="product"><img src="${I[c[1]][j%2]}" loading="lazy" alt="${esc(p)}"><div class="body"><h3>${esc(p)}</h3><div class="row"><span class="price">${c[3][j]}</span><button class="add" onclick="add(${i},${j})">+ ${t.add}</button></div></div></article>`).join("");
- $("modal").classList.add("show");document.body.classList.add("lock");
+ el('modalTitle').textContent=name;
+ let html="";
+ c[2].forEach((p,j)=>{
+   html += `<article class="product"><img src="${I[c[1]][j%2]}" loading="lazy" alt="${p}"><div class="body"><h3>${p}</h3><div class="row"><span class="price">${c[3][j]}</span><button class="add" onclick="add(${i},${j})">+ ${t.add}</button></div></div></article>`;
+ });
+ el('products').innerHTML=html;
+ el('modal').classList.add("show");
+ document.body.classList.add("lock");
 }
-function closeModal(){$("modal").classList.remove("show");document.body.classList.remove("lock")}
+
+function closeModal(){el('modal').classList.remove("show");document.body.classList.remove("lock")}
+
 function add(ci,pi){
- cart.push({ci,pi});save();showToast(T[lang].added);renderCart();
+ cart.push({ci,pi});
+ save();
+ showToast(T[lang].added);
+ renderCart();
 }
-function save(){localStorage.setItem("cmCart",JSON.stringify(cart));$("count").textContent=cart.length}
-function openCart(){renderCart();$("drawer").classList.add("show")}
-function closeCart(){$("drawer").classList.remove("show")}
+
+function save(){localStorage.setItem("cmCart",JSON.stringify(cart));el('count').textContent=cart.length}
+function openCart(){renderCart();el('drawer').classList.add("show")}
+function closeCart(){el('drawer').classList.remove("show")}
+
 function renderCart(){
  const t=T[lang];
- if(!cart.length){$("cartItems").innerHTML=`<div class="cartempty">${t.empty}</div>`;return}
- $("cartItems").innerHTML=cart.map((x,k)=>{let c=base[x.ci];return `<div class="cartline"><span>${esc(c[2][x.pi])}</span><b>${c[3][x.pi]}</b><button onclick="removeCart(${k})" style="background:none;border:0;color:#f77">×</button></div>`}).join("");
+ if(!cart.length){el('cartItems').innerHTML=`<div class="cartempty">${t.empty}</div>`;return}
+ let html="";
+ cart.forEach((x,k)=>{
+   let c=base[x.ci];
+   html += `<div class="cartline"><span>${c[2][x.pi]}</span><b>${c[3][x.pi]}</b><button onclick="removeCart(${k})" style="background:none;border:0;color:#f77;font-weight:bold;cursor:pointer">×</button></div>`;
+ });
+ el('cartItems').innerHTML=html;
 }
+
 function removeCart(k){cart.splice(k,1);save();renderCart()}
+
 function sendOrder(){
  if(!cart.length)return;
- const lines=cart.map(x=>{let c=base[x.ci];return `${c[2][x.pi]} — ${c[3][x.pi]}`}).join("\n");
- const WHATSAPP_NUMBER="491234567890";
- const text=encodeURIComponent(`Caesar Markt Neumünster\n\n${lines}\n\n${lang==="ar"?"أرغب في تأكيد الطلب والتوصيل.":"Ich möchte die Bestellung und Lieferung bestätigen."}`);
- window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`,"_blank");
+ let lines="";
+ cart.forEach(x=>{let c=base[x.ci];lines += `- ${c[2][x.pi]}: ${c[3][x.pi]}\n`});
+ const text=encodeURIComponent(`Caesar Markt Neumünster\n\nالطلبات:\n${lines}\nالرجاء التأكيد مع التوصيل.`);
+ window.open(`https://wa.me/491234567890?text=${text}`,"_blank");
 }
-function to(id){$(id).scrollIntoView({behavior:"smooth",block:"start"})}
+
+function to(id){el(id).scrollIntoView({behavior:"smooth",block:"start"})}
 function home(e){if(e)e.preventDefault();window.scrollTo({top:0,behavior:"smooth"})}
-function $(id){return document.getElementById(id)}
-function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
-function showToast(s){$("toast").textContent=s;$("toast").classList.add("show");clearTimeout(window.tt);window.tt=setTimeout(()=>$("toast").classList.remove("show"),1800)}
-$("lang").addEventListener("change",e=>{lang=e.target.value;localStorage.setItem("cmLang",lang);apply();renderCart()});
-$("search").addEventListener("input",e=>renderCats(e.target.value));
-document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeModal();closeCart()}})
+
+function showToast(s){
+ const t=el('toast');
+ t.textContent=s;
+ t.classList.add("show");
+ clearTimeout(window.tt);
+ window.tt=setTimeout(()=>t.classList.remove("show"),1800);
+}
+
+el('lang').addEventListener("change",e=>{lang=e.target.value;localStorage.setItem("cmLang",lang);apply();renderCart()});
+el('search').addEventListener("input",e=>renderCats(e.target.value));
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeModal();closeCart()}});
+
 apply();
 </script>
 </body>
