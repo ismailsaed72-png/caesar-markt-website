@@ -1,207 +1,3480 @@
+
 <!DOCTYPE html>
-<html lang="de" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caesar Markt Neumünster</title>
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
-        body { background-color: #fbfaf7; color: #172235; overflow-x: hidden; text-align: left; transition: all 0.3s ease; }
-        
-        /* دعم الاتجاهات للغة العربية تلقائياً */
-        body.rtl { text-align: right; }
-        body.rtl .header, body.rtl .brand, body.rtl .modal-content { direction: rtl; }
-        body.rtl .nav-links a { margin-left: 20px; margin-right: 0; }
-        body.rtl .close { left: auto; right: 15px; }
+  <title>Caesar Markt Neumünster</title>
+  <meta
+    name="description"
+    content="Caesar Markt Neumünster – Internationaler Supermarkt in Neumünster. Arabische, türkische und deutsche Produkte."
+  >
 
-        /* شريط التنقل العلوي */
-        .header {
-            background-color: #07172b;
-            border-bottom: 3px solid #d7ad55;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .brand { display: flex; align-items: center; gap: 15px; }
-        .logo { width: 65px; height: 65px; border-radius: 8px; border: 2px solid #d7ad55; object-fit: cover; }
-        .brand-name { color: #f1d68d; font-size: 20px; font-weight: 900; }
-        
-        .nav-right { display: flex; align-items: center; gap: 15px; }
-        .nav-links a { color: #ffffff; text-decoration: none; margin-left: 20px; font-weight: 700; font-size: 15px; }
-        .nav-links a:hover { color: #d7ad55; }
-        
-        /* زر اختيار اللغة الاحترافي */
-        .lang-select {
-            background-color: #0c223d;
-            color: #ffffff;
-            border: 1px solid #d7ad55;
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-weight: 700;
-            cursor: pointer;
-            outline: none;
-        }
+  <style>
+    :root {
+      --navy: #06132f;
+      --navy-2: #0a1d42;
+      --gold: #d9ad45;
+      --gold-light: #f5d477;
+      --white: #ffffff;
+      --text: #172033;
+      --muted: #697386;
+      --cream: #fbf8f0;
+      --card: #ffffff;
+      --border: rgba(6, 19, 47, 0.10);
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
+      --radius: 22px;
+      --max: 1240px;
+    }
 
-        .cart-btn { background-color: #d7ad55; color: #07172b; border: none; padding: 10px 15px; border-radius: 8px; font-weight: 700; cursor: pointer; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        /* القسم الرئيسي */
-        .hero {
-            background: linear-gradient(rgba(7, 23, 43, 0.8), rgba(7, 23, 43, 0.8)), url('store-hero.jpg') center/cover no-repeat;
-            min-height: 480px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #ffffff;
-            padding: 40px 20px;
-        }
-        .hero h1 { font-size: 36px; font-weight: 900; margin-bottom: 15px; color: #ffffff; }
-        .hero h1 span { color: #f1d68d; }
-        .hero p { font-size: 18px; margin-bottom: 25px; max-width: 600px; opacity: 0.9; }
-        
-        .btn-group { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
-        .btn { padding: 12px 25px; border-radius: 8px; font-weight: 700; text-decoration: none; display: inline-block; }
-        .btn-gold { background-color: #d7ad55; color: #07172b; }
-        .btn-whatsapp { background-color: #25d366; color: white; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        /* شريط التوصيل */
-        .banner { background-color: #0c223d; color: #ffffff; text-align: center; padding: 12px; font-weight: 700; border-bottom: 2px solid #d7ad55; }
+    body {
+      font-family:
+        Arial,
+        "Segoe UI",
+        Tahoma,
+        sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-        /* الأقسام والمربعات */
-        .sections { padding: 60px 20px; max-width: 1100px; margin: 0 auto; }
-        .sections h2 { text-align: center; margin-bottom: 30px; color: #07172b; font-weight: 900; }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-        .card { background: white; padding: 30px 20px; border-radius: 8px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eee; cursor: pointer; }
-        .card:hover { border-color: #d7ad55; transform: translateY(-3px); transition: 0.2s; }
-        .card h3 { color: #07172b; margin-bottom: 8px; }
-        .card p { color: #6d7684; font-size: 13px; }
+    body.modal-open {
+      overflow: hidden;
+    }
 
-        /* نافذة السلة */
-        .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 2000; padding: 20px; }
-        .modal-content { background: white; padding: 25px; border-radius: 8px; width: 100%; max-width: 450px; position: relative; }
-        .close { position: absolute; top: 15px; left: 15px; font-size: 22px; cursor: pointer; border: none; background: none; }
-        
-        .form-group { margin-top: 15px; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: 700; }
-        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; }
-        .warning { color: #c0392b; font-weight: bold; margin-top: 10px; display: none; font-size: 13px; }
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero h1 { font-size: 28px; }
-        }
-    </style>
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--gold-light);
+      outline-offset: 3px;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin-inline: auto;
+    }
+
+    /* =========================
+       TOP BAR
+    ========================== */
+
+    .top-alert {
+      background: linear-gradient(90deg, #b88922, #e7c15b, #b88922);
+      color: #111;
+      text-align: center;
+      font-weight: 800;
+      padding: 9px 15px;
+      font-size: 0.95rem;
+    }
+
+    /* =========================
+       HEADER
+    ========================== */
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(6, 19, 47, 0.97);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(245, 212, 119, 0.22);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.16);
+    }
+
+    .header-inner {
+      min-height: 92px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    /* الشعار */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      min-width: 0;
+      flex-shrink: 0;
+    }
+
+    .brand-logo {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      border: 2px solid rgba(245, 212, 119, 0.85);
+      border-radius: 16px;
+      background: #06132f;
+      padding: 3px;
+      box-shadow:
+        0 0 0 2px rgba(217, 173, 69, 0.12),
+        0 7px 22px rgba(0, 0, 0, 0.25);
+    }
+
+    .brand-text {
+      color: white;
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+
+    .brand-name {
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      font-weight: 900;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-city {
+      color: var(--gold-light);
+      font-size: 0.82rem;
+      margin-top: 5px;
+      font-weight: 600;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .nav a {
+      color: #fff;
+      padding: 10px 13px;
+      border-radius: 10px;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .nav a:hover {
+      color: var(--gold-light);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .language-select {
+      background: #fff;
+      color: #111;
+      border: 0;
+      border-radius: 10px;
+      padding: 9px 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .cart-button {
+      position: relative;
+      border: 1px solid rgba(245, 212, 119, 0.4);
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 11px;
+      font-weight: 800;
+      transition: 0.25s;
+    }
+
+    .cart-button:hover {
+      background: var(--gold);
+      color: #111;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      min-width: 23px;
+      height: 23px;
+      padding: 0 6px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #c62828;
+      color: #fff;
+      font-size: 0.75rem;
+      border: 2px solid var(--navy);
+    }
+
+    .mobile-toggle {
+      display: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.07);
+      color: #fff;
+      border-radius: 10px;
+      width: 44px;
+      height: 44px;
+      font-size: 1.35rem;
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero {
+      position: relative;
+      min-height: 690px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+
+      /*
+        صورة السوبرماركت:
+        يجب أن يكون الملف في جذر GitHub باسم:
+        store-hero.jpg
+      */
+      background:
+        linear-gradient(
+          90deg,
+          rgba(3, 12, 31, 0.91) 0%,
+          rgba(3, 12, 31, 0.74) 45%,
+          rgba(3, 12, 31, 0.48) 100%
+        ),
+        url("store-hero.jpg") center / cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 110px;
+      background: linear-gradient(
+        to top,
+        var(--cream),
+        transparent
+      );
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(92%, 900px);
+      margin-inline: auto;
+      text-align: center;
+      color: #fff;
+      padding: 80px 0 110px;
+    }
+
+    .hero-logo {
+      width: 112px;
+      height: 112px;
+      object-fit: contain;
+      margin: 0 auto 25px;
+      border-radius: 50%;
+      border: 2px solid rgba(245, 212, 119, 0.8);
+      background: rgba(6, 19, 47, 0.55);
+      padding: 5px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+    }
+
+    .hero-kicker {
+      display: inline-block;
+      color: var(--gold-light);
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 {
+      width: 100%;
+      max-width: 950px;
+      margin: 0 auto 22px;
+
+      font-size: clamp(2.15rem, 6vw, 5.1rem);
+      line-height: 1.08;
+      font-weight: 950;
+
+      color: #fff;
+      overflow: visible;
+      white-space: normal;
+      text-overflow: clip;
+
+      text-shadow: 0 5px 25px rgba(0,0,0,0.45);
+    }
+
+    .hero h1 span {
+      color: var(--gold-light);
+    }
+
+    .hero-description {
+      max-width: 760px;
+      margin: 0 auto 32px;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      line-height: 1.85;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 13px;
+      padding: 13px 22px;
+      font-weight: 900;
+      transition: 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #e9c65e, #c7952e);
+      color: #111;
+      box-shadow: 0 10px 25px rgba(217,173,69,0.22);
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(217,173,69,0.32);
+    }
+
+    .btn-light {
+      background: rgba(255,255,255,0.11);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+    }
+
+    .btn-light:hover {
+      background: rgba(255,255,255,0.18);
+    }
+
+    /* =========================
+       SECTION
+    ========================== */
+
+    section {
+      padding: 85px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 45px;
+    }
+
+    .section-heading .eyebrow {
+      color: #a77a1c;
+      font-size: 0.9rem;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-heading h2 {
+      color: var(--navy);
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.2;
+      margin-bottom: 13px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    /* =========================
+       SEARCH
+    ========================== */
+
+    .search-box {
+      max-width: 760px;
+      margin: -30px auto 45px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .search-box input {
+      width: 100%;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px 22px;
+      box-shadow: var(--shadow);
+      color: var(--text);
+      outline: none;
+      font-size: 1rem;
+    }
+
+    .search-box input:focus {
+      border-color: var(--gold);
+      box-shadow:
+        0 0 0 4px rgba(217,173,69,0.13),
+        var(--shadow);
+    }
+
+    /* =========================
+       CATEGORIES
+    ========================== */
+
+    .categories {
+      background: var(--cream);
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .category-card {
+      position: relative;
+      min-height: 300px;
+      border: 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      color: #fff;
+      background: #10203d;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+      text-align: right;
+      cursor: pointer;
+      isolation: isolate;
+    }
+
+    .category-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background-image: var(--category-image);
+      background-position: center;
+      background-size: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .category-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(
+          to top,
+          rgba(2, 10, 26, 0.95),
+          rgba(2, 10, 26, 0.25) 60%,
+          rgba(2, 10, 26, 0.05)
+        );
+    }
+
+    .category-card:hover::before {
+      transform: scale(1.07);
+    }
+
+    .category-content {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 25px;
+    }
+
+    .category-icon {
+      font-size: 2.2rem;
+      margin-bottom: 7px;
+    }
+
+    .category-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+    }
+
+    .category-content p {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.9rem;
+    }
+
+    .category-arrow {
+      position: absolute;
+      left: 20px;
+      bottom: 22px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+
+    /* =========================
+       PRODUCTS
+    ========================== */
+
+    .products-preview {
+      background: #fff;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .product-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      background: #f1eee5;
+    }
+
+    .product-info {
+      padding: 17px;
+    }
+
+    .product-category {
+      font-size: 0.76rem;
+      color: #a77a1c;
+      font-weight: 800;
+      margin-bottom: 5px;
+    }
+
+    .product-name {
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .product-price {
+      color: var(--muted);
+      font-size: 0.86rem;
+      margin-bottom: 13px;
+    }
+
+    .add-button {
+      width: 100%;
+      border: 0;
+      background: var(--navy);
+      color: #fff;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-weight: 800;
+    }
+
+    .add-button:hover {
+      background: #102d5f;
+    }
+
+    /* =========================
+       INFO
+    ========================== */
+
+    .info-section {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .info-content h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .info-content h2 span {
+      color: var(--gold-light);
+    }
+
+    .info-content p {
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 20px;
+    }
+
+    .address-box {
+      border: 1px solid rgba(245,212,119,0.25);
+      background: rgba(255,255,255,0.05);
+      border-radius: 18px;
+      padding: 22px;
+      margin-top: 22px;
+    }
+
+    .address-line {
+      margin-bottom: 9px;
+    }
+
+    .map-box {
+      min-height: 420px;
+      border-radius: 25px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+    }
+
+    .map-box iframe {
+      width: 100%;
+      height: 420px;
+      border: 0;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+      background: #030b1d;
+      color: rgba(255,255,255,0.7);
+      padding: 35px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-logo img {
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(245,212,119,0.5);
+      border-radius: 10px;
+      padding: 2px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 17px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links button {
+      background: none;
+      border: 0;
+      color: rgba(255,255,255,0.7);
+      cursor: pointer;
+    }
+
+    .footer-links button:hover {
+      color: var(--gold-light);
+    }
+
+    /* =========================
+       MODAL
+    ========================== */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(0,0,0,0.72);
+      backdrop-filter: blur(7px);
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-dialog {
+      position: relative;
+      width: min(1100px, 100%);
+      max-height: 92vh;
+      overflow-y: auto;
+      background: #fff;
+      border-radius: 25px;
+      box-shadow: 0 30px 100px rgba(0,0,0,0.35);
+    }
+
+    .modal-header {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 20px 23px;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .modal-header h2 {
+      color: var(--navy);
+    }
+
+    .close-button {
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 50%;
+      background: #f1f1f1;
+      color: #111;
+      font-size: 1.25rem;
+      font-weight: 900;
+    }
+
+    .close-button:hover {
+      background: #e3e3e3;
+    }
+
+    .modal-body {
+      padding: 24px;
+    }
+
+    .modal-product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    /* =========================
+       CART
+    ========================== */
+
+    .cart-layout {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 25px;
+    }
+
+    .cart-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 70px 1fr auto;
+      align-items: center;
+      gap: 13px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 10px;
+    }
+
+    .cart-item img {
+      width: 70px;
+      height: 70px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .cart-item-name {
+      font-weight: 900;
+      color: var(--navy);
+    }
+
+    .cart-item-meta {
+      font-size: 0.83rem;
+      color: var(--muted);
+    }
+
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 6px;
+    }
+
+    .quantity-controls button {
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      background: #fff;
+    }
+
+    .remove-item {
+      border: 0;
+      background: none;
+      color: #c62828;
+      font-size: 0.8rem;
+      margin-top: 5px;
+    }
+
+    .cart-summary {
+      background: #f8f6ef;
+      border-radius: 18px;
+      padding: 20px;
+      height: fit-content;
+      position: sticky;
+      top: 85px;
+    }
+
+    .cart-summary h3 {
+      color: var(--navy);
+      margin-bottom: 15px;
+    }
+
+    .summary-note {
+      background: #fff8dd;
+      border: 1px solid #ead28a;
+      border-radius: 12px;
+      padding: 13px;
+      margin: 14px 0;
+      font-size: 0.88rem;
+    }
+
+    .total-input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+      margin: 8px 0 15px;
+    }
+
+    .order-type {
+      display: grid;
+      gap: 9px;
+      margin: 15px 0;
+    }
+
+    .order-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--border);
+      padding: 11px;
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .form-grid label {
+      display: grid;
+      gap: 5px;
+      font-weight: 800;
+      color: var(--navy);
+      font-size: 0.9rem;
+    }
+
+    .form-grid input,
+    .form-grid textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+      outline: none;
+    }
+
+    .form-grid textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .warning {
+      display: none;
+      background: #ffeded;
+      color: #a40000;
+      border: 1px solid #efb1b1;
+      border-radius: 10px;
+      padding: 11px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .warning.show {
+      display: block;
+    }
+
+    .empty-cart {
+      text-align: center;
+      color: var(--muted);
+      padding: 45px 20px;
+    }
+
+    /* =========================
+       LEGAL MODAL
+    ========================== */
+
+    .legal-content {
+      line-height: 1.9;
+    }
+
+    .legal-content h3 {
+      color: var(--navy);
+      margin: 20px 0 7px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================== */
+
+    @media (max-width: 1050px) {
+      .category-grid,
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav {
+        gap: 2px;
+      }
+
+      .nav a {
+        padding-inline: 8px;
+      }
+    }
+
+    @media (max-width: 850px) {
+      .header-inner {
+        min-height: 82px;
+      }
+
+      .brand-logo {
+        width: 64px;
+        height: 64px;
+      }
+
+      .mobile-toggle {
+        display: block;
+      }
+
+      .nav {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px 5%;
+        background: rgba(6, 19, 47, 0.99);
+        border-top: 1px solid rgba(255,255,255,0.08);
+      }
+
+      .nav.open {
+        display: flex;
+      }
+
+      .nav a {
+        padding: 13px;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cart-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .cart-summary {
+        position: static;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .top-alert {
+        font-size: 0.82rem;
+      }
+
+      .brand-text {
+        display: none;
+      }
+
+      .header-actions {
+        margin-inline-start: auto;
+      }
+
+      .language-select {
+        max-width: 90px;
+      }
+
+      .hero {
+        min-height: 650px;
+      }
+
+      .hero-content {
+        padding: 65px 0 95px;
+      }
+
+      .hero-logo {
+        width: 92px;
+        height: 92px;
+      }
+
+      .hero h1 {
+        font-size: clamp(2rem, 11vw, 3.4rem);
+        line-height: 1.1;
+        padding-inline: 5px;
+      }
+
+      .hero-description {
+        font-size: 0.98rem;
+        line-height: 1.75;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+
+      .category-grid,
+      .product-grid,
+      .modal-product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .category-card {
+        min-height: 260px;
+      }
+
+      .modal {
+        padding: 0;
+        align-items: flex-end;
+      }
+
+      .modal-dialog {
+        max-height: 94vh;
+        border-radius: 25px 25px 0 0;
+      }
+
+      .modal-body {
+        padding: 17px;
+      }
+
+      .cart-item {
+        grid-template-columns: 58px 1fr;
+      }
+
+      .cart-item img {
+        width: 58px;
+        height: 58px;
+      }
+
+      .cart-item > div:last-child {
+        grid-column: 2;
+      }
+
+      .footer-inner {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .footer-logo {
+        justify-content: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-    <!-- الشريط العلوي مع منتقي اللغات ثلاثي الأبعاد -->
-    <header class="header">
-        <div class="brand">
-            <img src="logo.png" alt="Caesar" class="logo">
-            <span class="brand-name">CAESAR MARKT</span>
-        </div>
-        <div class="nav-right">
-            <nav class="nav-links">
-                <a href="#home" id="lnk-home">الرئيسية</a>
-                <a href="#store" id="lnk-store">الأقسام</a>
-            </nav>
-            <select class="lang-select" onchange="changeLanguage(this.value)">
-                <option value="de">Deutsch 🇩🇪</option>
-                <option value="ar">العربية 🇸🇦</option>
-                <option value="tr">Türkçe 🇹🇷</option>
-            </select>
-            <button class="cart-btn" onclick="openCart()">🛒 <span id="lbl-cart-btn">السلة</span> (<span id="cart-count">0</span>)</button>
-        </div>
-    </header>
+  <!-- =========================
+       DELIVERY ALERT
+  ========================== -->
 
-    <!-- القسم الرئيسي المترجم -->
+  <div class="top-alert" id="deliveryAlert">
+    🚚 التوصيل إلى المنزل: الحد الأدنى للطلب 40 €
+  </div>
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header class="header">
+    <div class="container header-inner">
+
+      <a href="#home" class="brand" aria-label="Caesar Markt Neumünster">
+        <img
+          src="logo.png"
+          alt="Caesar Markt Neumünster Logo"
+          class="brand-logo"
+          width="70"
+          height="70"
+        >
+
+        <div class="brand-text">
+          <div class="brand-name">CAESAR MARKT</div>
+          <div class="brand-city">Neumünster</div>
+        </div>
+      </a>
+
+      <nav class="nav" id="mainNav" aria-label="Main navigation">
+        <a href="#home" data-i18n="navHome">الرئيسية</a>
+        <a href="#categories" data-i18n="navShop">المتجر</a>
+        <a href="#products" data-i18n="navProducts">تسوق</a>
+        <a href="#about" data-i18n="navAbout">من نحن</a>
+        <a href="#contact" data-i18n="navContact">اتصل بنا</a>
+      </nav>
+
+      <div class="header-actions">
+
+        <select
+          id="languageSelect"
+          class="language-select"
+          aria-label="Language"
+        >
+          <option value="ar">العربية</option>
+          <option value="tr">Türkçe</option>
+          <option value="de">Deutsch</option>
+        </select>
+
+        <button
+          class="cart-button"
+          id="cartButton"
+          type="button"
+          aria-label="Shopping cart"
+        >
+          🛒 <span data-i18n="cart">السلة</span>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+
+        <button
+          class="mobile-toggle"
+          id="mobileToggle"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================
+       HERO
+  ========================== -->
+
+  <main>
+
     <section class="hero" id="home">
-        <h1 id="hero-title">Willkommen bei <span>Caesar Markt</span></h1>
-        <p id="hero-desc">Ihr orientalischer und internationaler Supermarkt im Herzen von Neumünster. Qualität und Frische.</p>
-        <div class="btn-group">
-            <a href="#store" class="btn btn-gold" id="btn-browse">🛍 Shop durchsuchen</a>
-            <a href="https://wa.me" class="btn btn-whatsapp" id="btn-wa">💬 WhatsApp Direkt</a>
+      <div class="hero-content">
+
+        <img
+          src="logo.png"
+          alt="Caesar Markt Logo"
+          class="hero-logo"
+          width="112"
+          height="112"
+        >
+
+        <div class="hero-kicker" data-i18n="heroKicker">
+          INTERNATIONALER SUPERMARKT
         </div>
+
+        <h1 data-i18n="heroTitle">
+          Willkommen bei <span>Caesar Markt</span>
+        </h1>
+
+        <p class="hero-description" data-i18n="heroDescription">
+          Entdecken Sie internationale Lebensmittel, arabische und türkische Spezialitäten
+          sowie ausgewählte Produkte aus aller Welt direkt in Neumünster.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#categories" class="btn btn-gold" data-i18n="shopNow">
+            🛍️ Jetzt einkaufen
+          </a>
+
+          <a
+            href="https://wa.me/491783489436"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-light"
+          >
+            💬 WhatsApp
+          </a>
+        </div>
+
+      </div>
     </section>
 
-    <!-- لافتة التوصيل الذكية بقيمة 40 يورو -->
-    <div class="banner" id="del-banner">
-        🚚 Lieferung nach Hause: Mindestbestellwert 40 € | Kostenlose Abholung im Geschäft möglich
+    <!-- =========================
+         SEARCH
+    ========================== -->
+
+    <div class="container">
+      <div class="search-box">
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="🔎 ابحث عن منتج..."
+          aria-label="Search products"
+        >
+      </div>
     </div>
 
-    <!-- الأقسام -->
-    <section class="sections" id="store">
-        <h2 id="sec-title">Kategorien durchsuchen</h2>
-        <div class="grid">
-            <div class="card" onclick="addItem('Oils', 'الزيوت والدهون', 'Sıvı Yağlar', 10)">
-                <h3 id="cat1-t">Öle & Fette</h3>
-                <p id="cat1-d">Klicken, um 10 € hinzuzufügen</p>
-            </div>
-            <div class="card" onclick="addItem('Spices', 'البهارات والتوابل', 'Baharatlar', 5)">
-                <h3 id="cat2-t">Gewürze</h3>
-                <p id="cat2-d">Klicken, um 5 € hinzuzufügen</p>
-            </div>
-            <div class="card" onclick="addItem('Rice', 'الأرز والبقوليات', 'Pirinç & Bakliyat', 8)">
-                <h3 id="cat3-t">Reis & Hülsenfrüchte</h3>
-                <p id="cat3-d">Klicken, um 8 € hinzuzufügen</p>
-            </div>
-            <div class="card" onclick="addItem('Meat', 'اللحوم الطازجة والحلال', 'Taze Et', 20)">
-                <h3 id="cat4-t">Frisches Fleisch</h3>
-                <p id="cat4-d">Klicken, um 20 € hinzuzufügen</p>
-            </div>
+    <!-- =========================
+         CATEGORIES
+    ========================== -->
+
+    <section class="categories" id="categories">
+
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow" data-i18n="categoriesEyebrow">
+            Caesar Markt
+          </div>
+
+          <h2 data-i18n="categoriesTitle">
+            أقسام المتجر
+          </h2>
+
+          <p data-i18n="categoriesText">
+            اضغط على أي قسم لعرض المنتجات المتوفرة.
+          </p>
         </div>
+
+        <div class="category-grid" id="categoryGrid"></div>
+
+      </div>
     </section>
 
-    <!-- السلة المنبثقة اللغات الثلاثة -->
-    <div class="modal" id="cartModal">
-        <div class="modal-content">
-            <button class="close" onclick="closeCart()">✕</button>
-            <h3 style="margin-bottom: 15px;" id="pop-title">🛒 Einkaufswagen</h3>
-            
-            <div id="cartItems" style="margin-bottom: 15px; max-height: 150px; overflow-y: auto;">
-                <p style="color: #6d7684;" id="cart-empty">Warenkorb ist leer.</p>
+    <!-- =========================
+         PRODUCTS
+    ========================== -->
+
+    <section class="products-preview" id="products">
+
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow" data-i18n="productsEyebrow">
+            Produkte
+          </div>
+
+          <h2 data-i18n="productsTitle">
+            منتجات مختارة
+          </h2>
+
+          <p data-i18n="productsText">
+            اختر المنتج وأضفه مباشرة إلى السلة.
+          </p>
+        </div>
+
+        <div class="product-grid" id="featuredProducts"></div>
+
+      </div>
+    </section>
+
+    <!-- =========================
+         ABOUT
+    ========================== -->
+
+    <section class="info-section" id="about">
+
+      <div class="container info-grid">
+
+        <div class="info-content">
+
+          <h2>
+            <span>Caesar Markt</span><br>
+            <span data-i18n="aboutTitle">نكهات من العالم</span>
+          </h2>
+
+          <p data-i18n="aboutText">
+            نرحب بكم في Caesar Markt في قلب Neumünster.
+            نقدم لكم مجموعة متنوعة من المنتجات الدولية
+            ونحرص على توفير تجربة تسوق مريحة ومميزة.
+          </p>
+
+          <div class="address-box">
+
+            <div class="address-line">
+              📍 <strong data-i18n="addressLabel">العنوان:</strong>
+              Großflecken 19
             </div>
 
-            <p style="font-weight: 700; margin-bottom: 15px;"><span id="lbl-total">Gesamt</span>: <span id="totalPrice">0</span> €</p>
-
-            <div class="form-group">
-                <label id="lbl-method">Abholoptions:</label>
-                <select id="method" onchange="checkLogic()">
-                    <option value="pickup" id="opt-pickup">🏪 Im Geschäft abholen</option>
-                    <option value="delivery" id="opt-delivery">🚚 Lieferung nach Hause (Mindest. 40 €)</option>
-                </select>
+            <div class="address-line">
+              🏙️ 24534 Neumünster
             </div>
 
-            <p class="warning" id="warningMsg">⚠ Für die Lieferung nach Hause muss die Bestellung mindestens 40 € betragen!</p>
-
-            <div class="form-group">
-                <label id="lbl-name">Name:</label>
-                <input type="text" id="name" placeholder="">
-            </div>
-            <div class="form-group">
-                <label id="lbl-phone">Telefonnummer:</label>
-                <input type="tel" id="phone" placeholder="">
-            </div>
-            <div class="form-group" id="addrGroup" style="display: none;">
-                <label id="lbl-address">Adresse:</label>
-                <input type="text" id="address" placeholder="">
+            <div class="address-line">
+              📞 WhatsApp:
+              <strong>+49 178 3489436</strong>
             </div>
 
-            <button class="btn btn-whatsapp" style="width: 100%; border: none; margin-top: 15px; cursor: pointer;" id="sendBtn" onclick="submitOrder()">
-                Bestellung über WhatsApp senden
+          </div>
+
+          <br>
+
+          <a
+            class="btn btn-gold"
+            href="https://www.google.com/maps/dir/?api=1&destination=Gro%C3%9Fflecken%2019%2C%2024534%20Neum%C3%BCnster"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-i18n="routeButton"
+          >
+            📍 Route planen
+          </a>
+
+        </div>
+
+        <div class="map-box">
+          <iframe
+            title="Caesar Markt Neumünster auf Google Maps"
+            src="https://www.google.com/maps?q=Gro%C3%9Fflecken+19,+24534+Neum%C3%BCnster&output=embed"
+            loading="lazy"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT ANCHOR -->
+    <section id="contact" style="padding:35px 0;background:#fff;">
+      <div class="container" style="text-align:center;">
+        <div class="section-heading" style="margin-bottom:20px;">
+          <div class="eyebrow" data-i18n="contactEyebrow">
+            Kontakt
+          </div>
+
+          <h2 data-i18n="contactTitle">
+            تواصل معنا
+          </h2>
+
+          <p data-i18n="contactText">
+            للطلب أو الاستفسار تواصل معنا مباشرة عبر WhatsApp.
+          </p>
+        </div>
+
+        <a
+          href="https://wa.me/491783489436"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-gold"
+        >
+          💬 +49 178 3489436
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <div class="footer-logo">
+        <img src="logo.png" alt="Caesar Markt Logo" width="48" height="48">
+        <div>
+          <strong>CAESAR MARKT Neumünster</strong><br>
+          <small>Großflecken 19 · 24534 Neumünster</small>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <button type="button" onclick="openLegal('privacy')" data-i18n="privacy">
+          Datenschutz
+        </button>
+
+        <button type="button" onclick="openLegal('imprint')" data-i18n="imprint">
+          Impressum
+        </button>
+      </div>
+
+    </div>
+
+  </footer>
+
+  <!-- =========================
+       CATEGORY / PRODUCTS MODAL
+  ========================== -->
+
+  <div
+    class="modal"
+    id="productsModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="productsModalTitle"
+  >
+
+    <div class="modal-dialog">
+
+      <div class="modal-header">
+        <h2 id="productsModalTitle">المنتجات</h2>
+
+        <button
+          class="close-button"
+          type="button"
+          onclick="closeModal('productsModal')"
+          aria-label="Close"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-product-grid" id="modalProductGrid"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================
+       CART MODAL
+  ========================== -->
+
+  <div
+    class="modal"
+    id="cartModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="cartModalTitle"
+  >
+
+    <div class="modal-dialog">
+
+      <div class="modal-header">
+        <h2 id="cartModalTitle" data-i18n="cartTitle">
+          سلة المشتريات
+        </h2>
+
+        <button
+          class="close-button"
+          type="button"
+          onclick="closeModal('cartModal')"
+          aria-label="Close"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="cart-layout">
+
+          <div>
+
+            <div id="cartList" class="cart-list"></div>
+
+            <button
+              id="clearCartButton"
+              class="btn"
+              type="button"
+              style="margin-top:15px;background:#f3e9e9;color:#a40000;"
+              data-i18n="clearCart"
+            >
+              🗑️ تفريغ السلة
             </button>
+
+          </div>
+
+          <aside class="cart-summary">
+
+            <h3 data-i18n="orderDetails">
+              بيانات الطلب
+            </h3>
+
+            <div class="summary-note">
+              <strong data-i18n="priceNoteTitle">
+                ملاحظة:
+              </strong>
+              <br>
+              <span data-i18n="priceNote">
+                الأسعار النهائية يتم تأكيدها من المتجر.
+              </span>
+            </div>
+
+            <label for="orderValue">
+              <strong data-i18n="orderValue">
+                قيمة الطلب (€)
+              </strong>
+            </label>
+
+            <input
+              id="orderValue"
+              class="total-input"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="مثال: 45"
+            >
+
+            <div class="order-type">
+
+              <label class="order-option">
+                <input
+                  type="radio"
+                  name="orderType"
+                  value="pickup"
+                  checked
+                >
+                <span data-i18n="pickup">
+                  🏪 استلام من المتجر
+                </span>
+              </label>
+
+              <label class="order-option">
+                <input
+                  type="radio"
+                  name="orderType"
+                  value="delivery"
+                >
+                <span data-i18n="delivery">
+                  🚚 توصيل إلى المنزل
+                </span>
+              </label>
+
+            </div>
+
+            <div
+              id="deliveryWarning"
+              class="warning"
+              data-i18n="deliveryWarning"
+            >
+              ⚠ للتوصيل إلى المنزل يجب أن تكون قيمة الطلب 40 € على الأقل.
+            </div>
+
+            <div class="form-grid">
+
+              <label>
+                <span data-i18n="name">الاسم</span>
+                <input
+                  id="customerName"
+                  type="text"
+                  autocomplete="name"
+                  placeholder="الاسم"
+                >
+              </label>
+
+              <label>
+                <span data-i18n="phone">رقم الهاتف</span>
+                <input
+                  id="customerPhone"
+                  type="tel"
+                  autocomplete="tel"
+                  placeholder="+49..."
+                >
+              </label>
+
+              <label id="addressField">
+                <span data-i18n="deliveryAddress">
+                  عنوان التوصيل
+                </span>
+
+                <textarea
+                  id="customerAddress"
+                  placeholder="العنوان الكامل"
+                ></textarea>
+              </label>
+
+              <label>
+                <span data-i18n="notes">ملاحظات</span>
+
+                <textarea
+                  id="customerNotes"
+                  placeholder="ملاحظات إضافية"
+                ></textarea>
+              </label>
+
+            </div>
+
+            <button
+              id="whatsappButton"
+              type="button"
+              class="btn btn-gold"
+              style="width:100%;margin-top:17px;"
+            >
+              💬 إرسال الطلب عبر WhatsApp
+            </button>
+
+          </aside>
+
         </div>
+
+      </div>
     </div>
+  </div>
+
+  <!-- =========================
+       LEGAL MODAL
+  ========================== -->
+
+  <div
+    class="modal"
+    id="legalModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="legalTitle"
+  >
+
+    <div class="modal-dialog">
+
+      <div class="modal-header">
+        <h2 id="legalTitle">Information</h2>
+
+        <button
+          class="close-button"
+          type="button"
+          onclick="closeModal('legalModal')"
+          aria-label="Close"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div class="modal-body legal-content" id="legalContent"></div>
+
+    </div>
+  </div>
 
 
+  <script>
+    /* =========================================================
+       CAESAR MARKT WEBSITE
+       ========================================================= */
+
+    const WHATSAPP_NUMBER = "491783489436";
+    const DELIVERY_MINIMUM = 40;
+
+    /* =========================================================
+       TRANSLATIONS
+       ========================================================= */
+
+    const translations = {
+
+      ar: {
+        dir: "rtl",
+
+        navHome: "الرئيسية",
+        navShop: "المتجر",
+        navProducts: "تسوق",
+        navAbout: "من نحن",
+        navContact: "اتصل بنا",
+        cart: "السلة",
+
+        heroKicker: "سوبرماركت دولي",
+        heroTitle: "مرحباً بكم في <span>Caesar Markt</span>",
+        heroDescription:
+          "اكتشفوا مجموعة متنوعة من المواد الغذائية العالمية والمنتجات العربية والتركية والمميزة من مختلف أنحاء العالم في Neumünster.",
+        shopNow: "🛍️ ابدأ التسوق",
+
+        categoriesEyebrow: "Caesar Markt",
+        categoriesTitle: "أقسام المتجر",
+        categoriesText:
+          "اضغط على أي قسم لعرض المنتجات المتوفرة.",
+
+        productsEyebrow: "منتجات",
+        productsTitle: "منتجات مختارة",
+        productsText:
+          "اختر المنتج وأضفه مباشرة إلى السلة.",
+
+        aboutTitle: "نكهات من العالم",
+        aboutText:
+          "نرحب بكم في Caesar Markt في قلب Neumünster. نقدم لكم مجموعة متنوعة من المنتجات الدولية ونحرص على توفير تجربة تسوق مريحة ومميزة.",
+        addressLabel: "العنوان:",
+        routeButton: "📍 احصل على الاتجاهات",
+
+        contactEyebrow: "تواصل",
+        contactTitle: "تواصل معنا",
+        contactText:
+          "للطلب أو الاستفسار تواصل معنا مباشرة عبر WhatsApp.",
+
+        cartTitle: "سلة المشتريات",
+        clearCart: "🗑️ تفريغ السلة",
+        orderDetails: "بيانات الطلب",
+        priceNoteTitle: "ملاحظة:",
+        priceNote: "الأسعار النهائية يتم تأكيدها من المتجر.",
+        orderValue: "قيمة الطلب (€)",
+        pickup: "🏪 استلام من المتجر",
+        delivery: "🚚 توصيل إلى المنزل",
+        deliveryWarning:
+          "⚠ للتوصيل إلى المنزل يجب أن تكون قيمة الطلب 40 € على الأقل.",
+        name: "الاسم",
+        phone: "رقم الهاتف",
+        deliveryAddress: "عنوان التوصيل",
+        notes: "ملاحظات",
+        add: "إضافة إلى السلة",
+        price: "السعر حسب المتجر",
+        emptyCart: "السلة فارغة حالياً.",
+        privacy: "Datenschutz",
+        imprint: "Impressum",
+        search: "🔎 ابحث عن منتج..."
+      },
+
+      tr: {
+        dir: "ltr",
+
+        navHome: "Ana Sayfa",
+        navShop: "Mağaza",
+        navProducts: "Alışveriş",
+        navAbout: "Hakkımızda",
+        navContact: "İletişim",
+        cart: "Sepet",
+
+        heroKicker: "ULUSLARARASI SÜPERMARKET",
+        heroTitle: "Caesar <span>Markt'a</span> Hoş Geldiniz",
+        heroDescription:
+          "Neumünster'de dünyanın farklı bölgelerinden gelen uluslararası, Arap ve Türk gıda ürünlerini keşfedin.",
+        shopNow: "🛍️ Alışverişe Başla",
+
+        categoriesEyebrow: "Caesar Markt",
+        categoriesTitle: "Mağaza Kategorileri",
+        categoriesText:
+          "Ürünleri görmek için bir kategoriye tıklayın.",
+
+        productsEyebrow: "Ürünler",
+        productsTitle: "Seçili Ürünler",
+        productsText:
+          "Ürünü seçin ve doğrudan sepete ekleyin.",
+
+        aboutTitle: "Dünyanın Lezzetleri",
+        aboutText:
+          "Neumünster'in merkezinde bulunan Caesar Markt'a hoş geldiniz. Size farklı ülkelerden geniş bir ürün seçeneği sunuyoruz.",
+        addressLabel: "Adres:",
+        routeButton: "📍 Yol Tarifi",
+
+        contactEyebrow: "İletişim",
+        contactTitle: "Bize Ulaşın",
+        contactText:
+          "Sipariş ve sorularınız için WhatsApp üzerinden bize ulaşabilirsiniz.",
+
+        cartTitle: "Alışveriş Sepeti",
+        clearCart: "🗑️ Sepeti Temizle",
+        orderDetails: "Sipariş Bilgileri",
+        priceNoteTitle: "Not:",
+        priceNote: "Nihai fiyatlar mağazada teyit edilir.",
+        orderValue: "Sipariş tutarı (€)",
+        pickup: "🏪 Mağazadan teslim",
+        delivery: "🚚 Eve teslimat",
+        deliveryWarning:
+          "⚠ Eve teslimat için minimum sipariş tutarı 40 € olmalıdır.",
+        name: "Ad Soyad",
+        phone: "Telefon",
+        deliveryAddress: "Teslimat adresi",
+        notes: "Notlar",
+        add: "Sepete Ekle",
+        price: "Mağaza fiyatı",
+        emptyCart: "Sepetiniz şu anda boş.",
+        privacy: "Datenschutz",
+        imprint: "Impressum",
+        search: "🔎 Ürün ara..."
+      },
+
+      de: {
+        dir: "ltr",
+
+        navHome: "Startseite",
+        navShop: "Shop",
+        navProducts: "Einkaufen",
+        navAbout: "Über uns",
+        navContact: "Kontakt",
+        cart: "Warenkorb",
+
+        heroKicker: "INTERNATIONALER SUPERMARKT",
+        heroTitle: "Willkommen bei <span>Caesar Markt</span>",
+        heroDescription:
+          "Entdecken Sie internationale Lebensmittel, arabische und türkische Spezialitäten sowie ausgewählte Produkte aus aller Welt direkt in Neumünster.",
+        shopNow: "🛍️ Jetzt einkaufen",
+
+        categoriesEyebrow: "Caesar Markt",
+        categoriesTitle: "Unsere Kategorien",
+        categoriesText:
+          "Klicken Sie auf eine Kategorie, um die Produkte zu sehen.",
+
+        productsEyebrow: "Produkte",
+        productsTitle: "Ausgewählte Produkte",
+        productsText:
+          "Produkt auswählen und direkt in den Warenkorb legen.",
+
+        aboutTitle: "Geschmack aus aller Welt",
+        aboutText:
+          "Willkommen bei Caesar Markt im Herzen von Neumünster. Wir bieten Ihnen eine vielfältige Auswahl internationaler Lebensmittel und Spezialitäten.",
+        addressLabel: "Adresse:",
+        routeButton: "📍 Route planen",
+
+        contactEyebrow: "Kontakt",
+        contactTitle: "Kontaktieren Sie uns",
+        contactText:
+          "Für Bestellungen und Fragen können Sie uns direkt über WhatsApp kontaktieren.",
+
+        cartTitle: "Warenkorb",
+        clearCart: "🗑️ Warenkorb leeren",
+        orderDetails: "Bestelldaten",
+        priceNoteTitle: "Hinweis:",
+        priceNote: "Die endgültigen Preise werden im Geschäft bestätigt.",
+        orderValue: "Bestellwert (€)",
+        pickup: "🏪 Abholung im Geschäft",
+        delivery: "🚚 Lieferung nach Hause",
+        deliveryWarning:
+          "⚠ Für die Lieferung nach Hause muss der Bestellwert mindestens 40 € betragen.",
+        name: "Name",
+        phone: "Telefon",
+        deliveryAddress: "Lieferadresse",
+        notes: "Notizen",
+        add: "In den Warenkorb",
+        price: "Preis im Laden",
+        emptyCart: "Der Warenkorb ist derzeit leer.",
+        privacy: "Datenschutz",
+        imprint: "Impressum",
+        search: "🔎 Produkt suchen..."
+      }
+
+    };
+
+
+    /* =========================================================
+       PRODUCT IMAGES
+       ========================================================= */
+
+    const images = {
+
+      oilMain:
+        "https://images.pexels.com/photos/31275834/pexels-photo-31275834.jpeg",
+
+      spices:
+        "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=1200&q=85",
+
+      rice:
+        "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=1200&q=85",
+
+      meat:
+        "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=1200&q=85"
+
+    };
+
+
+    /* =========================================================
+       PRODUCT DATA
+       ========================================================= */
+
+    const categories = [
+
+      {
+        id: "oils",
+        icon: "🫒",
+        image: images.oilMain,
+
+        name: {
+          ar: "الزيوت",
+          tr: "Yağlar",
+          de: "Öle"
+        },
+
+        description: {
+          ar: "زيوت متنوعة للطبخ والسلطات",
+          tr: "Çeşitli yemeklik yağlar",
+          de: "Verschiedene Speiseöle"
+        },
+
+        products: [
+
+          {
+            id: "olive-oil",
+            image:
+              "https://commons.wikimedia.org/wiki/Special:FilePath/Bottle_of_olive_oil.jpg",
+            name: {
+              ar: "زيت الزيتون",
+              tr: "Zeytinyağı",
+              de: "Olivenöl"
+            }
+          },
+
+          {
+            id: "sunflower-oil",
+            image:
+              "https://commons.wikimedia.org/wiki/Special:FilePath/Bottle%201%20liter%20Sunflower%20refined%20oil.jpg",
+            name: {
+              ar: "زيت دوار الشمس",
+              tr: "Ayçiçek Yağı",
+              de: "Sonnenblumenöl"
+            }
+          },
+
+          {
+            id: "sesame-oil",
+            image:
+              "https://commons.wikimedia.org/wiki/Special:FilePath/Sesame-oil.jpg",
+            name: {
+              ar: "زيت السمسم",
+              tr: "Susam Yağı",
+              de: "Sesamöl"
+            }
+          },
+
+          {
+            id: "coconut-oil",
+            image:
+              "https://commons.wikimedia.org/wiki/Special:FilePath/Coconut%20oil.jpg",
+            name: {
+              ar: "زيت جوز الهند",
+              tr: "Hindistan Cevizi Yağı",
+              de: "Kokosöl"
+            }
+          },
+
+          {
+            id: "peanut-oil",
+            image:
+              "https://commons.wikimedia.org/wiki/Special:FilePath/Peanut%20oil%20bottle.jpg",
+            name: {
+              ar: "زيت الفول السوداني",
+              tr: "Yer Fıstığı Yağı",
+              de: "Erdnussöl"
+            }
+          },
+
+          {
+            id: "pumpkin-oil",
+            image:
+              "https://commons.wikimedia.org/wiki/Special:FilePath/PumpkinSeedOil.png",
+            name: {
+              ar: "زيت بذور اليقطين",
+              tr: "Kabak Çekirdeği Yağı",
+              de: "Kürbiskernöl"
+            }
+          },
+
+          {
+            id: "mustard-oil",
+            image:
+              "https://commons.wikimedia.org/wiki/Special:FilePath/Mustard%20Oil%20MoteNyinSei.jpg",
+            name: {
+              ar: "زيت الخردل",
+              tr: "Hardal Yağı",
+              de: "Senföl"
+            }
+          },
+
+          {
+            id: "grapeseed-oil",
+            image:
+              "https://commons.wikimedia.org/wiki/Special:FilePath/Grapeseed-oil.jpg",
+            name: {
+              ar: "زيت بذور العنب",
+              tr: "Üzüm Çekirdeği Yağı",
+              de: "Traubenkernöl"
+            }
+          },
+
+          {
+            id: "soybean-oil",
+            image:
+              "https://commons.wikimedia.org/wiki/Special:FilePath/Soybean%20Oil%20%2810059604144%29.jpg",
+            name: {
+              ar: "زيت فول الصويا",
+              tr: "Soya Yağı",
+              de: "Sojaöl"
+            }
+          },
+
+          {
+            id: "corn-oil",
+            image:
+              "https://commons.wikimedia.org/wiki/Special:FilePath/Corn%20oil.jpg",
+            name: {
+              ar: "زيت الذرة",
+              tr: "Mısır Yağı",
+              de: "Maisöl"
+            }
+          }
+
+        ]
+      },
+
+      {
+        id: "spices",
+        icon: "🌶️",
+        image: images.spices,
+
+        name: {
+          ar: "البهارات والتوابل",
+          tr: "Baharatlar",
+          de: "Gewürze"
+        },
+
+        description: {
+          ar: "بهارات وتوابل متنوعة",
+          tr: "Çeşitli baharatlar",
+          de: "Verschiedene Gewürze"
+        },
+
+        products: [
+
+          {
+            id: "pepper",
+            image:
+              "https://images.unsplash.com/photo-1599909533730-f9d7a4a5e2ef?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "فلفل أسود",
+              tr: "Karabiber",
+              de: "Schwarzer Pfeffer"
+            }
+          },
+
+          {
+            id: "paprika",
+            image:
+              "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "بابريكا",
+              tr: "Toz Biber",
+              de: "Paprika"
+            }
+          },
+
+          {
+            id: "cumin",
+            image:
+              "https://images.unsplash.com/photo-1615485925600-97237c4fc1ec?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "كمون",
+              tr: "Kimyon",
+              de: "Kreuzkümmel"
+            }
+          },
+
+          {
+            id: "turmeric",
+            image:
+              "https://images.unsplash.com/photo-1615485500704-8e990f9900f7?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "كركم",
+              tr: "Zerdeçal",
+              de: "Kurkuma"
+            }
+          },
+
+          {
+            id: "cinnamon",
+            image:
+              "https://images.unsplash.com/photo-1609510746524-7fefbb6b6d11?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "قرفة",
+              tr: "Tarçın",
+              de: "Zimt"
+            }
+          },
+
+          {
+            id: "cardamom",
+            image:
+              "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "هيل",
+              tr: "Kakule",
+              de: "Kardamom"
+            }
+          },
+
+          {
+            id: "coriander",
+            image:
+              "https://images.unsplash.com/photo-1532336414038-cf19250c5757?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "كزبرة",
+              tr: "Kişniş",
+              de: "Koriander"
+            }
+          },
+
+          {
+            id: "sumac",
+            image:
+              "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "سماق",
+              tr: "Sumak",
+              de: "Sumach"
+            }
+          },
+
+          {
+            id: "seven-spices",
+            image:
+              "https://images.unsplash.com/photo-1599909533730-f9d7a4a5e2ef?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "سبع بهارات",
+              tr: "Yedi Baharat",
+              de: "Sieben Gewürze"
+            }
+          },
+
+          {
+            id: "chili",
+            image:
+              "https://images.unsplash.com/photo-1588252303782-cb80119abd6d?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "شطة",
+              tr: "Pul Biber",
+              de: "Chiliflocken"
+            }
+          }
+
+        ]
+      },
+
+      {
+        id: "rice",
+        icon: "🍚",
+        image: images.rice,
+
+        name: {
+          ar: "الأرز والبقوليات",
+          tr: "Pirinç ve Bakliyat",
+          de: "Reis & Hülsenfrüchte"
+        },
+
+        description: {
+          ar: "أرز وعدس وفاصوليا وبقوليات",
+          tr: "Pirinç, mercimek ve bakliyat",
+          de: "Reis, Linsen und Hülsenfrüchte"
+        },
+
+        products: [
+
+          {
+            id: "basmati",
+            image:
+              "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "أرز بسمتي",
+              tr: "Basmati Pirinç",
+              de: "Basmati-Reis"
+            }
+          },
+
+          {
+            id: "rice-long",
+            image:
+              "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "أرز طويل الحبة",
+              tr: "Uzun Taneli Pirinç",
+              de: "Langkornreis"
+            }
+          },
+
+          {
+            id: "lentils-red",
+            image:
+              "https://images.unsplash.com/photo-1585995939374-1a5e9b3c4f5e?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "عدس أحمر",
+              tr: "Kırmızı Mercimek",
+              de: "Rote Linsen"
+            }
+          },
+
+          {
+            id: "lentils-green",
+            image:
+              "https://images.unsplash.com/photo-1515543904379-3d757afe72e4?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "عدس أخضر",
+              tr: "Yeşil Mercimek",
+              de: "Grüne Linsen"
+            }
+          },
+
+          {
+            id: "chickpeas",
+            image:
+              "https://images.unsplash.com/photo-1515543904379-3d757afe72e4?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "حمص",
+              tr: "Nohut",
+              de: "Kichererbsen"
+            }
+          },
+
+          {
+            id: "beans",
+            image:
+              "https://images.unsplash.com/photo-1551462147-ff29053bfc14?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "فاصوليا",
+              tr: "Fasulye",
+              de: "Bohnen"
+            }
+          },
+
+          {
+            id: "bulgur",
+            image:
+              "https://images.unsplash.com/photo-1614961233913-a5113a4a34a3?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "برغل",
+              tr: "Bulgur",
+              de: "Bulgur"
+            }
+          },
+
+          {
+            id: "white-beans",
+            image:
+              "https://images.unsplash.com/photo-1551462147-ff29053bfc14?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "فاصوليا بيضاء",
+              tr: "Kuru Fasulye",
+              de: "Weiße Bohnen"
+            }
+          },
+
+          {
+            id: "peas",
+            image:
+              "https://images.unsplash.com/photo-1589927986089-35812388d1f4?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "بازلاء",
+              tr: "Bezelye",
+              de: "Erbsen"
+            }
+          },
+
+          {
+            id: "red-beans",
+            image:
+              "https://images.unsplash.com/photo-1551462147-ff29053bfc14?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "فاصوليا حمراء",
+              tr: "Kırmızı Fasulye",
+              de: "Kidneybohnen"
+            }
+          }
+
+        ]
+      },
+
+      {
+        id: "meat",
+        icon: "🥩",
+        image: images.meat,
+
+        name: {
+          ar: "اللحوم",
+          tr: "Et Ürünleri",
+          de: "Fleisch"
+        },
+
+        description: {
+          ar: "مجموعة مختارة من اللحوم",
+          tr: "Seçkin et ürünleri",
+          de: "Ausgewählte Fleischprodukte"
+        },
+
+        products: [
+
+          {
+            id: "beef",
+            image:
+              "https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "لحم بقري",
+              tr: "Dana Eti",
+              de: "Rindfleisch"
+            }
+          },
+
+          {
+            id: "lamb",
+            image:
+              "https://images.unsplash.com/photo-1514517220017-8ce97a34a7b6?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "لحم غنم",
+              tr: "Kuzu Eti",
+              de: "Lammfleisch"
+            }
+          },
+
+          {
+            id: "minced-beef",
+            image:
+              "https://images.unsplash.com/photo-1588347818036-558601350947?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "لحم مفروم",
+              tr: "Kıyma",
+              de: "Hackfleisch"
+            }
+          },
+
+          {
+            id: "chicken",
+            image:
+              "https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "دجاج",
+              tr: "Tavuk",
+              de: "Hähnchen"
+            }
+          },
+
+          {
+            id: "chicken-breast",
+            image:
+              "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "صدر دجاج",
+              tr: "Tavuk Göğsü",
+              de: "Hähnchenbrust"
+            }
+          },
+
+          {
+            id: "lamb-chops",
+            image:
+              "https://images.unsplash.com/photo-1432139555190-58524dae6a55?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "قطع لحم غنم",
+              tr: "Kuzu Pirzola",
+              de: "Lammkoteletts"
+            }
+          },
+
+          {
+            id: "beef-steak",
+            image:
+              "https://images.unsplash.com/photo-1546964124-0cce460f38ef?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "ستيك بقري",
+              tr: "Dana Biftek",
+              de: "Rindersteak"
+            }
+          },
+
+          {
+            id: "chicken-wings",
+            image:
+              "https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "أجنحة دجاج",
+              tr: "Tavuk Kanadı",
+              de: "Hähnchenflügel"
+            }
+          },
+
+          {
+            id: "beef-cubes",
+            image:
+              "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "مكعبات لحم",
+              tr: "Kuşbaşı Et",
+              de: "Rindergulasch"
+            }
+          },
+
+          {
+            id: "mixed-meat",
+            image:
+              "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80",
+            name: {
+              ar: "لحوم مشكلة",
+              tr: "Karışık Et",
+              de: "Gemischtes Fleisch"
+            }
+          }
+
+        ]
+      }
+
+    ];
+
+
+    /* =========================================================
+       STATE
+    ========================================================== */
+
+    let currentLanguage =
+      localStorage.getItem("caesarLanguage") || "ar";
+
+    let cart =
+      JSON.parse(localStorage.getItem("caesarCart") || "[]");
+
+
+    /* =========================================================
+       HELPERS
+    ========================================================== */
+
+    function t(key) {
+      return (
+        translations[currentLanguage]?.[key] ||
+        translations.ar[key] ||
+        key
+      );
+    }
+
+    function saveCart() {
+      localStorage.setItem(
+        "caesarCart",
+        JSON.stringify(cart)
+      );
+    }
+
+    function allProducts() {
+      return categories.flatMap(category =>
+        category.products.map(product => ({
+          ...product,
+          categoryId: category.id,
+          categoryName: category.name
+        }))
+      );
+    }
+
+    function getProduct(productId) {
+      return allProducts().find(
+        product => product.id === productId
+      );
+    }
+
+    function getCategory(categoryId) {
+      return categories.find(
+        category => category.id === categoryId
+      );
+    }
+
+
+    /* =========================================================
+       LANGUAGE
+    ========================================================== */
+
+    function applyLanguage() {
+
+      const lang = translations[currentLanguage];
+
+      document.documentElement.lang = currentLanguage;
+      document.documentElement.dir = lang.dir;
+
+      document.querySelectorAll("[data-i18n]").forEach(element => {
+
+        const key = element.dataset.i18n;
+
+        if (!lang[key]) return;
+
+        if (element.tagName === "INPUT") {
+          element.placeholder = lang[key];
+        } else if (element.tagName === "TEXTAREA") {
+          element.placeholder = lang[key];
+        } else {
+          element.innerHTML = lang[key];
+        }
+
+      });
+
+      document.getElementById("searchInput").placeholder =
+        lang.search;
+
+      renderCategories();
+      renderFeaturedProducts();
+      renderCart();
+
+      localStorage.setItem(
+        "caesarLanguage",
+        currentLanguage
+      );
+
+      document.getElementById("languageSelect").value =
+        currentLanguage;
+    }
+
+
+    /* =========================================================
+       CATEGORIES
+    ========================================================== */
+
+    function renderCategories() {
+
+      const grid =
+        document.getElementById("categoryGrid");
+
+      grid.innerHTML = "";
+
+      categories.forEach(category => {
+
+        const card = document.createElement("button");
+
+        card.type = "button";
+        card.className = "category-card";
+
+        card.style.setProperty(
+          "--category-image",
+          `url("${category.image}")`
+        );
+
+        card.innerHTML = `
+          <div class="category-content">
+            <div class="category-icon">${category.icon}</div>
+
+            <h3>
+              ${category.name[currentLanguage]}
+            </h3>
+
+            <p>
+              ${category.description[currentLanguage]}
+            </p>
+          </div>
+
+          <div class="category-arrow">
+            ${currentLanguage === "ar" ? "←" : "→"}
+          </div>
+        `;
+
+        card.addEventListener("click", () => {
+          openCategory(category.id);
+        });
+
+        grid.appendChild(card);
+      });
+    }
+
+
+    /* =========================================================
+       PRODUCTS
+    ========================================================== */
+
+    function createProductCard(product) {
+
+      const card = document.createElement("article");
+
+      card.className = "product-card";
+
+      card.innerHTML = `
+        <img
+          class="product-image"
+          src="${product.image}"
+          alt="${product.name[currentLanguage]}"
+          loading="lazy"
+          onerror="this.src='${images.oilMain}'"
+        >
+
+        <div class="product-info">
+
+          <div class="product-category">
+            ${product.categoryName[currentLanguage]}
+          </div>
+
+          <div class="product-name">
+            ${product.name[currentLanguage]}
+          </div>
+
+          <div class="product-price">
+            ${t("price")}
+          </div>
+
+          <button
+            type="button"
+            class="add-button"
+            onclick="addToCart('${product.id}')"
+          >
+            ${t("add")}
+          </button>
+
+        </div>
+      `;
+
+      return card;
+    }
+
+
+    function renderFeaturedProducts() {
+
+      const grid =
+        document.getElementById("featuredProducts");
+
+      grid.innerHTML = "";
+
+      allProducts()
+        .slice(0, 8)
+        .forEach(product => {
+          grid.appendChild(
+            createProductCard(product)
+          );
+        });
+    }
+
+
+    function openCategory(categoryId) {
+
+      const category =
+        getCategory(categoryId);
+
+      if (!category) return;
+
+      document.getElementById(
+        "productsModalTitle"
+      ).textContent =
+        `${category.icon} ${category.name[currentLanguage]}`;
+
+      const grid =
+        document.getElementById("modalProductGrid");
+
+      grid.innerHTML = "";
+
+      category.products.forEach(product => {
+        grid.appendChild(
+          createProductCard({
+            ...product,
+            categoryName: category.name
+          })
+        );
+      });
+
+      openModal("productsModal");
+    }
+
+
+    /* =========================================================
+       CART
+    ========================================================== */
+
+    function addToCart(productId) {
+
+      const existing =
+        cart.find(item => item.id === productId);
+
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({
+          id: productId,
+          quantity: 1
+        });
+      }
+
+      saveCart();
+      updateCartCount();
+      renderCart();
+
+      const cartButton =
+        document.getElementById("cartButton");
+
+      cartButton.animate(
+        [
+          { transform: "scale(1)" },
+          { transform: "scale(1.08)" },
+          { transform: "scale(1)" }
+        ],
+        {
+          duration: 300
+        }
+      );
+    }
+
+
+    function changeQuantity(productId, amount) {
+
+      const item =
+        cart.find(item => item.id === productId);
+
+      if (!item) return;
+
+      item.quantity += amount;
+
+      if (item.quantity <= 0) {
+        cart =
+          cart.filter(
+            cartItem => cartItem.id !== productId
+          );
+      }
+
+      saveCart();
+      updateCartCount();
+      renderCart();
+    }
+
+
+    function removeFromCart(productId) {
+
+      cart =
+        cart.filter(
+          item => item.id !== productId
+        );
+
+      saveCart();
+      updateCartCount();
+      renderCart();
+    }
+
+
+    function clearCart() {
+
+      cart = [];
+
+      saveCart();
+      updateCartCount();
+      renderCart();
+    }
+
+
+    function updateCartCount() {
+
+      const count =
+        cart.reduce(
+          (sum, item) => sum + item.quantity,
+          0
+        );
+
+      document.getElementById("cartCount").textContent =
+        count;
+    }
+
+
+    function renderCart() {
+
+      const list =
+        document.getElementById("cartList");
+
+      if (!cart.length) {
+
+        list.innerHTML = `
+          <div class="empty-cart">
+            🛒<br><br>
+            ${t("emptyCart")}
+          </div>
+        `;
+
+        return;
+      }
+
+      list.innerHTML = "";
+
+      cart.forEach(item => {
+
+        const product =
+          getProduct(item.id);
+
+        if (!product) return;
+
+        const row =
+          document.createElement("div");
+
+        row.className = "cart-item";
+
+        row.innerHTML = `
+
+          <img
+            src="${product.image}"
+            alt="${product.name[currentLanguage]}"
+            onerror="this.src='${images.oilMain}'"
+          >
+
+          <div>
+
+            <div class="cart-item-name">
+              ${product.name[currentLanguage]}
+            </div>
+
+            <div class="cart-item-meta">
+              ${product.categoryName[currentLanguage]}
+            </div>
+
+            <div class="quantity-controls">
+
+              <button
+                type="button"
+                onclick="changeQuantity('${product.id}', -1)"
+              >
+                −
+              </button>
+
+              <strong>
+                ${item.quantity}
+              </strong>
+
+              <button
+                type="button"
+                onclick="changeQuantity('${product.id}', 1)"
+              >
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+          <div style="text-align:center;">
+
+            <div>
+              ${t("price")}
+            </div>
+
+            <button
+              type="button"
+              class="remove-item"
+              onclick="removeFromCart('${product.id}')"
+            >
+              ✕
+            </button>
+
+          </div>
+        `;
+
+        list.appendChild(row);
+      });
+    }
+
+
+    /* =========================================================
+       MODALS
+    ========================================================== */
+
+    function openModal(id) {
+
+      const modal =
+        document.getElementById(id);
+
+      modal.classList.add("open");
+
+      document.body.classList.add("modal-open");
+
+      const closeButton =
+        modal.querySelector(".close-button");
+
+      if (closeButton) {
+        setTimeout(
+          () => closeButton.focus(),
+          50
+        );
+      }
+    }
+
+
+    function closeModal(id) {
+
+      const modal =
+        document.getElementById(id);
+
+      modal.classList.remove("open");
+
+      if (
+        !document.querySelector(".modal.open")
+      ) {
+        document.body.classList.remove("modal-open");
+      }
+    }
+
+
+    /* =========================================================
+       CART OPEN
+    ========================================================== */
+
+    document
+      .getElementById("cartButton")
+      .addEventListener("click", () => {
+
+        renderCart();
+        openModal("cartModal");
+
+      });
+
+
+    document
+      .getElementById("clearCartButton")
+      .addEventListener(
+        "click",
+        clearCart
+      );
+
+
+    /* =========================================================
+       ORDER TYPE
+    ========================================================== */
+
+    function getOrderType() {
+
+      return document.querySelector(
+        'input[name="orderType"]:checked'
+      )?.value || "pickup";
+
+    }
+
+
+    function updateDeliveryState() {
+
+      const delivery =
+        getOrderType() === "delivery";
+
+      const addressField =
+        document.getElementById("addressField");
+
+      const warning =
+        document.getElementById("deliveryWarning");
+
+      addressField.style.display =
+        delivery ? "grid" : "grid";
+
+      const orderValue =
+        parseFloat(
+          document.getElementById("orderValue").value
+        ) || 0;
+
+      if (
+        delivery &&
+        orderValue > 0 &&
+        orderValue < DELIVERY_MINIMUM
+      ) {
+        warning.classList.add("show");
+      } else {
+        warning.classList.remove("show");
+      }
+    }
+
+
+    document
+      .querySelectorAll('input[name="orderType"]')
+      .forEach(radio => {
+
+        radio.addEventListener(
+          "change",
+          updateDeliveryState
+        );
+
+      });
+
+
+    document
+      .getElementById("orderValue")
+      .addEventListener(
+        "input",
+        updateDeliveryState
+      );
+
+
+    /* =========================================================
+       WHATSAPP ORDER
+    ========================================================== */
+
+    document
+      .getElementById("whatsappButton")
+      .addEventListener(
+        "click",
+        sendWhatsAppOrder
+      );
+
+
+    function sendWhatsAppOrder() {
+
+      if (!cart.length) {
+
+        alert(t("emptyCart"));
+        return;
+      }
+
+      const name =
+        document
+          .getElementById("customerName")
+          .value.trim();
+
+      const phone =
+        document
+          .getElementById("customerPhone")
+          .value.trim();
+
+      const address =
+        document
+          .getElementById("customerAddress")
+          .value.trim();
+
+      const notes =
+        document
+          .getElementById("customerNotes")
+          .value.trim();
+
+      const orderValue =
+        parseFloat(
+          document
+            .getElementById("orderValue")
+            .value
+        ) || 0;
+
+      const orderType =
+        getOrderType();
+
+      if (!name) {
+        alert(
+          currentLanguage === "ar"
+            ? "يرجى كتابة الاسم."
+            : currentLanguage === "tr"
+              ? "Lütfen adınızı yazın."
+              : "Bitte geben Sie Ihren Namen ein."
+        );
+        return;
+      }
+
+      if (!phone) {
+        alert(
+          currentLanguage === "ar"
+            ? "يرجى كتابة رقم الهاتف."
+            : currentLanguage === "tr"
+              ? "Lütfen telefon numaranızı yazın."
+              : "Bitte geben Sie Ihre Telefonnummer ein."
+        );
+        return;
+      }
+
+      if (
+        orderType === "delivery" &&
+        !address
+      ) {
+        alert(
+          currentLanguage === "ar"
+            ? "يرجى كتابة عنوان التوصيل."
+            : currentLanguage === "tr"
+              ? "Lütfen teslimat adresini yazın."
+              : "Bitte geben Sie die Lieferadresse ein."
+        );
+        return;
+      }
+
+      if (
+        orderType === "delivery" &&
+        orderValue < DELIVERY_MINIMUM
+      ) {
+
+        document
+          .getElementById("deliveryWarning")
+          .classList.add("show");
+
+        alert(
+          t("deliveryWarning")
+        );
+
+        return;
+      }
+
+      let message = "";
+
+      if (currentLanguage === "ar") {
+
+        message +=
+          "🛒 *طلب جديد - Caesar Markt Neumünster*%0A%0A";
+
+        message += `👤 الاسم: ${name}%0A`;
+        message += `📞 الهاتف: ${phone}%0A`;
+
+        message +=
+          `📦 نوع الطلب: ${
+            orderType === "delivery"
+              ? "توصيل إلى المنزل"
+              : "استلام من المتجر"
+          }%0A`;
+
+        if (orderType === "delivery") {
+          message += `📍 العنوان: ${address}%0A`;
+        }
+
+        message += `💶 قيمة الطلب: ${orderValue.toFixed(2)} €%0A%0A`;
+
+        message += "📋 المنتجات:%0A";
+
+      } else if (currentLanguage === "tr") {
+
+        message +=
+          "🛒 *Yeni Sipariş - Caesar Markt Neumünster*%0A%0A";
+
+        message += `👤 Ad: ${name}%0A`;
+        message += `📞 Telefon: ${phone}%0A`;
+
+        message +=
+          `📦 Sipariş tipi: ${
+            orderType === "delivery"
+              ? "Eve teslimat"
+              : "Mağazadan teslim"
+          }%0A`;
+
+        if (orderType === "delivery") {
+          message += `📍 Adres: ${address}%0A`;
+        }
+
+        message += `💶 Sipariş tutarı: ${orderValue.toFixed(2)} €%0A%0A`;
+
+        message += "📋 Ürünler:%0A";
+
+      } else {
+
+        message +=
+          "🛒 *Neue Bestellung - Caesar Markt Neumünster*%0A%0A";
+
+        message += `👤 Name: ${name}%0A`;
+        message += `📞 Telefon: ${phone}%0A`;
+
+        message +=
+          `📦 Bestellart: ${
+            orderType === "delivery"
+              ? "Lieferung nach Hause"
+              : "Abholung im Geschäft"
+          }%0A`;
+
+        if (orderType === "delivery") {
+          message += `📍 Adresse: ${address}%0A`;
+        }
+
+        message += `💶 Bestellwert: ${orderValue.toFixed(2)} €%0A%0A`;
+
+        message += "📋 Produkte:%0A";
+      }
+
+
+      cart.forEach(item => {
+
+        const product =
+          getProduct(item.id);
+
+        if (!product) return;
+
+        message +=
+          `• ${product.name[currentLanguage]} × ${item.quantity}%0A`;
+
+      });
+
+
+      if (notes) {
+
+        if (currentLanguage === "ar") {
+          message += `%0A📝 ملاحظات: ${notes}%0A`;
+        }
+
+        if (currentLanguage === "tr") {
+          message += `%0A📝 Notlar: ${notes}%0A`;
+        }
+
+        if (currentLanguage === "de") {
+          message += `%0A📝 Notizen: ${notes}%0A`;
+        }
+      }
+
+
+      message +=
+        "%0A📍 Caesar Markt%0AGroßflecken 19, 24534 Neumünster";
+
+
+      const whatsappURL =
+        `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+
+
+      window.open(
+        whatsappURL,
+        "_blank",
+        "noopener,noreferrer"
+      );
+
+    }
+
+
+    /* =========================================================
+       SEARCH
+    ========================================================== */
+
+    document
+      .getElementById("searchInput")
+      .addEventListener(
+        "input",
+        function () {
+
+          const query =
+            this.value
+              .trim()
+              .toLowerCase();
+
+          if (!query) {
+            renderFeaturedProducts();
+            return;
+          }
+
+          const results =
+            allProducts().filter(product => {
+
+              const names = [
+                product.name.ar,
+                product.name.tr,
+                product.name.de
+              ]
+                .join(" ")
+                .toLowerCase();
+
+              return names.includes(query);
+            });
+
+
+          const grid =
+            document.getElementById(
+              "featuredProducts"
+            );
+
+          grid.innerHTML = "";
+
+          results.forEach(product => {
+            grid.appendChild(
+              createProductCard(product)
+            );
+          });
+
+        }
+      );
+
+
+    /* =========================================================
+       MOBILE MENU
+    ========================================================== */
+
+    const mobileToggle =
+      document.getElementById(
+        "mobileToggle"
+      );
+
+    const mainNav =
+      document.getElementById(
+        "mainNav"
+      );
+
+
+    mobileToggle.addEventListener(
+      "click",
+      () => {
+
+        const isOpen =
+          mainNav.classList.toggle("open");
+
+        mobileToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+      }
+    );
+
+
+    document
+      .querySelectorAll("#mainNav a")
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            mainNav.classList.remove("open");
+
+            mobileToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+          }
+        );
+
+      });
+
+
+    /* =========================================================
+       CLOSE MODALS
+    ========================================================== */
+
+    document
+      .querySelectorAll(".modal")
+      .forEach(modal => {
+
+        modal.addEventListener(
+          "click",
+          event => {
+
+            if (
+              event.target === modal
+            ) {
+              closeModal(modal.id);
+            }
+
+          }
+        );
+
+      });
+
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (event.key !== "Escape") return;
+
+        document
+          .querySelectorAll(".modal.open")
+          .forEach(modal => {
+            closeModal(modal.id);
+          });
+
+      }
+    );
+
+
+    /* =========================================================
+       LEGAL
+    ========================================================== */
+
+    function openLegal(type) {
+
+      const title =
+        document.getElementById(
+          "legalTitle"
+        );
+
+      const content =
+        document.getElementById(
+          "legalContent"
+        );
+
+
+      if (type === "privacy") {
+
+        title.textContent =
+          "Datenschutz";
+
+        content.innerHTML = `
+          <h3>Datenschutz</h3>
+
+          <p>
+            Diese Website dient der Präsentation des
+            Caesar Markt Neumünster und der Kontaktaufnahme
+            für Bestellungen.
+          </p>
+
+          <p>
+            Bei einer Bestellung über WhatsApp werden die
+            vom Kunden freiwillig übermittelten Daten zur
+            Bearbeitung der Anfrage bzw. Bestellung verwendet.
+          </p>
+
+          <p>
+            Bitte übermitteln Sie keine unnötigen sensiblen
+            oder vertraulichen Daten.
+          </p>
+        `;
+
+      } else {
+
+        title.textContent =
+          "Impressum";
+
+        content.innerHTML = `
+          <h3>Impressum</h3>
+
+          <p>
+            Caesar Markt Neumünster
+          </p>
+
+          <p>
+            Großflecken 19<br>
+            24534 Neumünster<br>
+            Deutschland
+          </p>
+
+          <p>
+            Kontakt über WhatsApp:<br>
+            +49 178 3489436
+          </p>
+
+          <p>
+            Weitere gesetzlich erforderliche Angaben
+            sollten entsprechend den tatsächlichen
+            Unternehmensdaten ergänzt werden.
+          </p>
+        `;
+      }
+
+
+      openModal("legalModal");
+    }
+
+
+    /* =========================================================
+       LANGUAGE CHANGE
+    ========================================================== */
+
+    document
+      .getElementById("languageSelect")
+      .addEventListener(
+        "change",
+        event => {
+
+          currentLanguage =
+            event.target.value;
+
+          applyLanguage();
+
+        }
+      );
+
+
+    /* =========================================================
+       INITIALIZE
+    ========================================================== */
+
+    applyLanguage();
+    updateCartCount();
+    updateDeliveryState();
+
+  </script>
+
+</body>
+</html>
 
