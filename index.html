@@ -1,5 +1,4 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
@@ -92,7 +91,7 @@ html[dir="ltr"] .cartpanel{right:0}html[dir="rtl"] .cartpanel{left:0}
 <header>
  <div class="head">
   <a class="brand" href="#" onclick="home(event)">
-   <img src="logo.png" alt="Caesar Markt">
+   <svg width="50" height="50" viewBox="0 0 100 100" fill="#d9ae52"><path d="M10 80 L90 80 L85 30 L65 50 L50 20 L35 50 L15 30 Z"/><circle cx="50" cy="12" r="5"/><circle cx="15" cy="22" r="4"/><circle cx="85" cy="22" r="4"/></svg>
    <div><h1>CAESAR MARKT</h1><p id="brandSub"></p></div>
   </a>
   <div class="tools">
@@ -222,7 +221,6 @@ function removeCart(k){cart.splice(k,1);save();renderCart()}
 function sendOrder(){
  if(!cart.length)return;
  const lines=cart.map(x=>{let c=base[x.ci];return `${c[2][x.pi]} — ${c[3][x.pi]}`}).join("\n");
- // ضع رقم واتساب المتجر هنا بصيغة دولية، مثال: 491234567890
  const WHATSAPP_NUMBER="491234567890";
  const text=encodeURIComponent(`Caesar Markt Neumünster\n\n${lines}\n\n${lang==="ar"?"أرغب في تأكيد الطلب والتوصيل.":"Ich möchte die Bestellung und Lieferung bestätigen."}`);
  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`,"_blank");
