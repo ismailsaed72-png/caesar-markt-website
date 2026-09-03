@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caesar Markt Neumünster - قيصر ماركت</title>
+    <title>Caesar Markt Neumünster</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #0d1b2a; color: #ffffff; }
 
-        /* الشريط العلوي */
         .top-bar {
             background-color: #c5a059;
             color: #000;
@@ -18,7 +17,6 @@
             font-weight: bold;
         }
 
-        /* الهيدر والشعار */
         header {
             background-color: #0b131f;
             border-bottom: 2px solid #c5a059;
@@ -26,12 +24,19 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .logo-box {
             display: flex;
             align-items: center;
             gap: 15px;
+        }
+
+        .crown-logo {
+            width: 50px;
+            height: auto;
         }
 
         .logo-title h1 {
@@ -54,7 +59,6 @@
             cursor: pointer;
         }
 
-        /* القائمة الرئيسية */
         nav {
             background-color: #1b263b;
             padding: 12px 5%;
@@ -72,24 +76,40 @@
             color: #fff;
             text-decoration: none;
             font-weight: 500;
+            cursor: pointer;
         }
 
         nav ul li a:hover {
             color: #c5a059;
         }
 
-        /* شبكة الأقسام الـ 25 */
         .container {
             max-width: 1200px;
             margin: 30px auto;
             padding: 0 15px;
         }
 
-        .section-title {
-            text-align: center;
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 25px;
-            font-size: 28px;
+        }
+
+        .section-title {
+            font-size: 26px;
             color: #c5a059;
+        }
+
+        .back-btn {
+            background-color: #c5a059;
+            color: #000;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            display: none;
         }
 
         .grid {
@@ -104,9 +124,9 @@
             border-radius: 8px;
             overflow: hidden;
             text-align: center;
-            text-decoration: none;
             color: white;
             transition: 0.3s;
+            cursor: pointer;
         }
 
         .card:hover {
@@ -116,7 +136,7 @@
 
         .card img {
             width: 100%;
-            height: 180px;
+            height: 170px;
             object-fit: cover;
             background-color: #0b131f;
         }
@@ -126,7 +146,12 @@
             font-size: 15px;
         }
 
-        /* الفوتر */
+        .card .price {
+            color: #c5a059;
+            font-weight: bold;
+            padding-bottom: 12px;
+        }
+
         footer {
             background-color: #060c14;
             color: #ccc;
@@ -150,15 +175,9 @@
             padding-bottom: 5px;
         }
 
-        .footer-col p, .footer-col li {
+        .footer-col p {
             font-size: 14px;
             margin-bottom: 8px;
-            line-height: 1.5;
-        }
-
-        .footer-col a {
-            color: #ccc;
-            text-decoration: none;
         }
 
         .footer-bottom {
@@ -172,83 +191,60 @@
 </head>
 <body>
 
-    <div class="top-bar">
+    <div class="top-bar" id="top-announcement">
         نقبل الحجز والتوصيل إلى المنزل في حدود المدينة (الحد الأدنى للطلب 40 يورو)
     </div>
 
     <header>
         <div class="logo-box">
+            <svg class="crown-logo" viewBox="0 0 100 100" fill="#c5a059">
+                <path d="M10 80 L90 80 L85 30 L65 50 L50 20 L35 50 L15 30 Z" />
+                <circle cx="50" cy="12" r="5" />
+                <circle cx="15" cy="22" r="4" />
+                <circle cx="85" cy="22" r="4" />
+            </svg>
             <div class="logo-title">
                 <h1>CAESAR MARKT</h1>
                 <p>Orientalische Lebensmittel, Fleischerei, Shisha, Tabak und Vapes</p>
             </div>
         </div>
         <div class="lang-select">
-            <select>
-                <option>العربية (Arabic)</option>
-                <option>Deutsch (German)</option>
-                <option>Türkçe (Turkish)</option>
+            <select id="langSwitcher" onchange="changeLanguage(this.value)">
+                <option value="ar">العربية (Arabic)</option>
+                <option value="de">Deutsch (German)</option>
+                <option value="tr">Türkçe (Turkish)</option>
             </select>
         </div>
     </header>
 
     <nav>
         <ul>
-            <li><a href="#">الرئيسية</a></li>
-            <li><a href="#">المتجر</a></li>
-            <li><a href="#">تسوق</a></li>
-            <li><a href="#">من نحن</a></li>
-            <li><a href="#">اتصل بنا</a></li>
+            <li><a onclick="showCategories()" id="nav-home">الرئيسية</a></li>
+            <li><a onclick="showCategories()" id="nav-store">المتجر</a></li>
+            <li><a id="nav-about">من نحن</a></li>
+            <li><a id="nav-contact">اتصل بنا</a></li>
         </ul>
     </nav>
 
     <div class="container">
-        <h2 class="section-title">الأقسام الرئيسية</h2>
-        <div class="grid">
-            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400" alt="خضار"><h3>1. الخضار الطازجة</h3></a>
-            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1528751014936-863e6e7a319c?w=400" alt="أجبان"><h3>2. الأجبان والألبان</h3></a>
-            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=400" alt="لحوم"><h3>3. اللحوم الطازجة (Fleischerei)</h3></a>
-            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1599940824399-b87987ceb72a?w=400" alt="مخللات"><h3>4. المقبلات والمخللات</h3></a>
-            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400" alt="حبوب"><h3>5. البقوليات والحبوب</h3></a>
-            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400" alt="مجمدات"><h3>6. المجمدات</h3></a>
-            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1534483509719-3feaee7c30da?w=400" alt="معلبات"><h3>7. المعلبات العامة</h3></a>
-            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400" alt="عصائر"><h3>8. العصائر والمشروبات</h3></a>
-            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400" alt="بهارات"><h3>9. البهارات والتوابل</h3></a>
-            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1536591375315-1989914b3d7a?w=400" alt="مكسرات"><h3>10. المكسرات والمحمصات</h3></a>
-            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=400" alt="فواكه"><h3>11. الفواكه الطازجة</h3></a>
-            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1527016016007-57a1990621cd?w=400" alt="شيشة وتوابعها"><h3>12. Shisha, Tabak und Vapes</h3></a>
-            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1582293041079-7814c2f12063?w=400" alt="بسكويت"><h3>13. البسكويت والشوكولاتة</h3></a>
-            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400" alt="خبز"><h3>14. المخبوزات والخبز</h3></a>
-            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400" alt="زيوت"><h3>15. زيوت الطبخ والزيتون</h3></a>
-            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=400" alt="صلصة"><h3>16. معجون الصلصة والصوصات</h3></a>
-            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400" alt="قهوة وشاي"><h3>17. القهوة والشاي</h3></a>
-            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1534483509719-3feaee7c30da?w=400" alt="أسماك معلبة"><h3>18. الأسماك المعلبة</h3></a>
-            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400" alt="حلويات"><h3>19. الحلويات الشرقية</h3></a>
-            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1585421514284-efb74c2b69ba?w=400" alt="منظفات"><h3>20. مواد التنظيف</h3></a>
-            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400" alt="عسل"><h3>21. عسل النحل الطبيعي</h3></a>
-            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=400" alt="سمن"><h3>22. السمن البلدي والنباتي</h3></a>
-            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?w=400" alt="أسماك مجمدة"><h3>23. الأسماك المجمدة</h3></a>
-            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=400" alt="تمور"><h3>24. التمور والفواكه المجففة</h3></a>
-            <a href="#" class="card"><img src="https://images.unsplash.com/photo-1582293041079-7814c2f12063?w=400" alt="حلويات أطفال"><h3>25. حلويات الأطفال والكاشير</h3></a>
+        <div class="section-header">
+            <h2 class="section-title" id="main-heading">الأقسام الرئيسية</h2>
+            <button class="back-btn" id="backBtn" onclick="showCategories()">← العودة للرئيسية</button>
         </div>
+        <div class="grid" id="contentGrid"></div>
     </div>
 
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
-                <h4>مواعيد العمل (Öffnungszeiten)</h4>
+                <h4 id="foot-hours-title">مواعيد العمل</h4>
                 <p>Montag – Samstag: 08:30 – 20:00 Uhr</p>
-                <p>Sonntag: Geschlossen (الأحد مغلق)</p>
+                <p id="foot-closed">Sonntag: Geschlossen (الأحد مغلق)</p>
             </div>
             <div class="footer-col">
-                <h4>العنوان والاتصال</h4>
+                <h4 id="foot-address-title">العنوان والاتصال</h4>
                 <p><strong>CAESAR MARKT</strong></p>
                 <p>Großflecken 19, 24534 Neumünster</p>
-            </div>
-            <div class="footer-col">
-                <h4>معلومات قانونية</h4>
-                <p><a href="#">سياسة الخصوصية (Datenschutz)</a></p>
-                <p><a href="#">بصمة الموقع (Impressum)</a></p>
             </div>
         </div>
         <div class="footer-bottom">
@@ -256,5 +252,119 @@
         </div>
     </footer>
 
+    <script>
+        const storeData = {
+            ar: {
+                title: "الأقسام الرئيسية",
+                back: "← العودة للأقسام",
+                announcement: "نقبل الحجز والتوصيل إلى المنزل في حدود المدينة (الحد الأدنى للطلب 40 يورو)",
+                navHome: "الرئيسية", navStore: "المتجر", navAbout: "من نحن", navContact: "اتصل بنا",
+                hoursTitle: "مواعيد العمل", closed: "Sonntag: Geschlossen (الأحد مغلق)", addressTitle: "العنوان والاتصال",
+                categories: [
+                    { id: "veg", name: "الخضار الطازجة", img: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400", items: [{ name: "طماطم طازجة", price: "1.99 € / كغ" }, { name: "خيار بلدية", price: "1.49 € / كغ" }, { name: "نعناع طازج", price: "0.79 € / باقة" }] },
+                    { id: "cheese", name: "الأجبان والألبان", img: "https://images.unsplash.com/photo-1528751014936-863e6e7a319c?w=400", items: [{ name: "جبنة حلوم", price: "3.49 €" }, { name: "لبنة بلدية", price: "2.99 €" }, { name: "جبنة بيضاء بلدية", price: "4.99 € / كغ" }] },
+                    { id: "meat", name: "اللحوم الطازجة (Fleischerei)", img: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=400", items: [{ name: "صدر دجاج طازج (10 كيلو)", price: "59.99 €" }, { name: "لحم خاروف بعظمه", price: "12.99 € / كغ" }, { name: "لحم عجل مفروم", price: "9.99 € / كغ" }] },
+                    { id: "shisha", name: "Shisha, Tabak und Vapes", img: "https://images.unsplash.com/photo-1527016016007-57a1990621cd?w=400", items: [{ name: "معسل فاخر (أنواع مختلفة)", price: "17.90 €" }, { name: "فيب سحبة جاهزة (Vape)", price: "9.99 €" }, { name: "فحم نرجيلة طبيعي", price: "6.50 €" }] },
+                    { id: "legumes", name: "البقوليات والحبوب", img: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400", items: [{ name: "أرز بسمتي فاخر 5 كغ", price: "11.99 €" }, { name: "عدس أحمر 1 كغ", price: "2.29 €" }, { name: "حمص حب 1 كغ", price: "2.49 €" }] },
+                    { id: "pickles", name: "المقبلات والمخللات", img: "https://images.unsplash.com/photo-1599940824399-b87987ceb72a?w=400", items: [{ name: "مخلل خيار بلدي", price: "2.99 €" }, { name: "مقدوس باذنجان", price: "4.50 €" }, { name: "زيتون أخضر مجروح", price: "3.99 € / كغ" }] }
+                ]
+            },
+            de: {
+                title: "Hauptkategorien",
+                back: "← Zurück zu Kategorien",
+                announcement: "Lieferservice im Stadtgebiet verfügbar (Mindestbestellwert 40 €)",
+                navHome: "Startseite", navStore: "Geschäft", navAbout: "Über uns", navContact: "Kontakt",
+                hoursTitle: "Öffnungszeiten", closed: "Sonntag: Geschlossen", addressTitle: "Adresse & Kontakt",
+                categories: [
+                    { id: "veg", name: "Frisches Gemüse", img: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400", items: [{ name: "Frische Tomaten", price: "1.99 € / kg" }, { name: "Gurken", price: "1.49 € / kg" }] },
+                    { id: "cheese", name: "Käse & Milchprodukte", img: "https://images.unsplash.com/photo-1528751014936-863e6e7a319c?w=400", items: [{ name: "Halloumi Käse", price: "3.49 €" }, { name: "Labneh", price: "2.99 €" }] },
+                    { id: "meat", name: "Fleischerei", img: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=400", items: [{ name: "Hähnchenbrust 10 KG", price: "59.99 €" }, { name: "Lammfleisch", price: "12.99 € / kg" }] },
+                    { id: "shisha", name: "Shisha, Tabak & Vapes", img: "https://images.unsplash.com/photo-1527016016007-57a1990621cd?w=400", items: [{ name: "Shisha Tabak", price: "17.90 €" }, { name: "Einweg Vapes", price: "9.99 €" }] },
+                    { id: "legumes", name: "Hülsenfrüchte & Reis", img: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400", items: [{ name: "Basmati Reis 5kg", price: "11.99 €" }] },
+                    { id: "pickles", name: "Feinkost & Oliven", img: "https://images.unsplash.com/photo-1599940824399-b87987ceb72a?w=400", items: [{ name: "Grüne Oliven", price: "3.99 € / kg" }] }
+                ]
+            },
+            tr: {
+                title: "Ana Kategoriler",
+                back: "← Kategorilere Geri Dön",
+                announcement: "Şehir içi eve teslimat mevcuttur (Minimum sipariş 40 €)",
+                navHome: "Ana Sayfa", navStore: "Mağaza", navAbout: "Hakkımızda", navContact: "İletişim",
+                hoursTitle: "Calışma Saatleri", closed: "Pazar: Kapalı", addressTitle: "Adres ve İletişim",
+                categories: [
+                    { id: "veg", name: "Taze Sebzeler", img: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400", items: [{ name: "Taze Domates", price: "1.99 € / kg" }] },
+                    { id: "cheese", name: "Peynir & Süt Ürünleri", img: "https://images.unsplash.com/photo-1528751014936-863e6e7a319c?w=400", items: [{ name: "Hellim Peyniri", price: "3.49 €" }] },
+                    { id: "meat", name: "Kasap (Fleischerei)", img: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=400", items: [{ name: "Tavuk Göğsü 10 KG", price: "59.99 €" }] },
+                    { id: "shisha", name: "Nargile, Tütün & Vape", img: "https://images.unsplash.com/photo-1527016016007-57a1990621cd?w=400", items: [{ name: "Nargile Tütünü", price: "17.90 €" }] },
+                    { id: "legumes", name: "Bakliyat & Pirinç", img: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400", items: [{ name: "Basmati Pirinç 5kg", price: "11.99 €" }] },
+                    { id: "pickles", name: "Zeytin ve Turşular", img: "https://images.unsplash.com/photo-1599940824399-b87987ceb72a?w=400", items: [{ name: "Yeşil Zeytin", price: "3.99 € / kg" }] }
+                ]
+            }
+        };
+
+        let currentLang = 'ar';
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            document.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            
+            const data = storeData[lang];
+            document.getElementById('top-announcement').innerText = data.announcement;
+            document.getElementById('nav-home').innerText = data.navHome;
+            document.getElementById('nav-store').innerText = data.navStore;
+            document.getElementById('nav-about').innerText = data.navAbout;
+            document.getElementById('nav-contact').innerText = data.navContact;
+            document.getElementById('foot-hours-title').innerText = data.hoursTitle;
+            document.getElementById('foot-closed').innerText = data.closed;
+            document.getElementById('foot-address-title').innerText = data.addressTitle;
+
+            showCategories();
+        }
+
+        function showCategories() {
+            const data = storeData[currentLang];
+            document.getElementById('main-heading').innerText = data.title;
+            document.getElementById('backBtn').style.display = 'none';
+
+            const grid = document.getElementById('contentGrid');
+            grid.innerHTML = '';
+
+            data.categories.forEach(cat => {
+                grid.innerHTML += `
+                    <div class="card" onclick="showSubItems('${cat.id}')">
+                        <img src="${cat.img}" alt="${cat.name}">
+                        <h3>${cat.name}</h3>
+                    </div>
+                `;
+            });
+        }
+
+        function showSubItems(catId) {
+            const data = storeData[currentLang];
+            const category = data.categories.find(c => c.id === catId);
+            
+            if(!category) return;
+
+            document.getElementById('main-heading').innerText = category.name;
+            const backBtn = document.getElementById('backBtn');
+            backBtn.innerText = data.back;
+            backBtn.style.display = 'block';
+
+            const grid = document.getElementById('contentGrid');
+            grid.innerHTML = '';
+
+            category.items.forEach(item => {
+                grid.innerHTML += `
+                    <div class="card" style="cursor: default;">
+                        <img src="${category.img}" alt="${item.name}">
+                        <h3>${item.name}</h3>
+                        <div class="price">${item.price}</div>
+                    </div>
+                `;
+            });
+        }
+
+        // تشغيل البداية
+        showCategories();
+    </script>
 </body>
 </html>
