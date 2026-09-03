@@ -1,342 +1,207 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="de" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caesar Markt Neumünster | سوبر ماركت دولي</title>
-    <meta name="description" content="Caesar Markt Neumünster - سوبر ماركت دولي في قلب Neumünster. تسوق، استلام من المتجر وتوصيل إلى المنزل.">
-    <meta name="theme-color" content="#07172b">
-
+    <title>Caesar Markt Neumünster</title>
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
 
     <style>
-        :root {
-            --navy: #07172b;
-            --navy-light: #0c223d;
-            --gold: #d7ad55;
-            --gold-light: #f1d68d;
-            --white: #ffffff;
-            --bg-light: #fbfaf7;
-            --text: #172235;
-            --muted: #6d7684;
-            --green: #25d366;
-            --danger: #c0392b;
-            --radius: 12px;
-            --header-height: 95px;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+        body { background-color: #fbfaf7; color: #172235; overflow-x: hidden; text-align: left; transition: all 0.3s ease; }
+        
+        /* دعم الاتجاهات للغة العربية تلقائياً */
+        body.rtl { text-align: right; }
+        body.rtl .header, body.rtl .brand, body.rtl .modal-content { direction: rtl; }
+        body.rtl .nav-links a { margin-left: 20px; margin-right: 0; }
+        body.rtl .close { left: auto; right: 15px; }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: "Cairo", sans-serif;
-            background: var(--bg-light);
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        .container {
-            width: min(1200px, calc(100% - 32px));
-            margin: 0 auto;
-        }
-
-        /* HEADER & LOGO UPDATED FOR CAESAR BRAND */
-        .site-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: var(--header-height);
-            z-index: 1000;
-            background: rgba(7, 23, 43, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 2px solid var(--gold);
+        /* شريط التنقل العلوي */
+        .header {
+            background-color: #07172b;
+            border-bottom: 3px solid #d7ad55;
+            padding: 10px 20px;
             display: flex;
-            align-items: center;
-        }
-
-        .header-inner {
-            width: 100%;
-            display: flex;
-            align-items: center;
             justify-content: space-between;
-        }
-
-        .brand {
-            display: flex;
             align-items: center;
-            gap: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-
-        .brand-logo {
-            width: 75px; /* مقاس مثالي ومميز للشعار */
-            height: 75px;
-            border-radius: 14px; /* زوايا ناعمة تتناسق مع هيبة التاج */
-            object-fit: cover;
-            border: 2px solid var(--gold);
-            background: var(--navy);
-            box-shadow: 0 4px 15px rgba(215, 173, 85, 0.2);
-        }
-
-        .brand-text .brand-name {
-            color: var(--gold-light);
-            font-family: "Montserrat", sans-serif;
-            font-size: 20px;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-        }
-
-        .brand-text .brand-city {
-            color: #fff;
-            font-size: 12px;
-            opacity: 0.8;
-            font-weight: 600;
-        }
-
-        .main-nav a {
-            color: #fff;
-            margin: 0 12px;
+        .brand { display: flex; align-items: center; gap: 15px; }
+        .logo { width: 65px; height: 65px; border-radius: 8px; border: 2px solid #d7ad55; object-fit: cover; }
+        .brand-name { color: #f1d68d; font-size: 20px; font-weight: 900; }
+        
+        .nav-right { display: flex; align-items: center; gap: 15px; }
+        .nav-links a { color: #ffffff; text-decoration: none; margin-left: 20px; font-weight: 700; font-size: 15px; }
+        .nav-links a:hover { color: #d7ad55; }
+        
+        /* زر اختيار اللغة الاحترافي */
+        .lang-select {
+            background-color: #0c223d;
+            color: #ffffff;
+            border: 1px solid #d7ad55;
+            padding: 8px 12px;
+            border-radius: 6px;
             font-weight: 700;
-            font-size: 15px;
-            transition: 0.3s;
-        }
-
-        .main-nav a:hover {
-            color: var(--gold);
-        }
-
-        .cart-button {
-            position: relative;
-            background: var(--gold);
-            border: none;
-            padding: 12px 18px;
-            border-radius: var(--radius);
-            font-weight: 700;
-            color: var(--navy);
-            display: flex;
-            align-items: center;
-            gap: 8px;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(215, 173, 85, 0.3);
-            transition: 0.3s;
-        }
-
-        .cart-button:hover {
-            transform: translateY(-2px);
-            background: var(--gold-light);
-        }
-
-        .cart-count {
-            background: var(--danger);
-            color: white;
-            border-radius: 50%;
-            padding: 2px 8px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        /* HERO SECTION */
-        .hero {
-            position: relative;
-            min-height: 85vh;
-            padding-top: var(--header-height);
-            background: linear-gradient(rgba(7, 23, 43, 0.85), rgba(7, 23, 43, 0.75)), url("store-hero.jpg") center/cover no-repeat;
-            display: flex;
-            align-items: center;
-            color: white;
-            text-align: center;
-        }
-
-        .hero-content {
-            width: 100%;
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .hero-title {
-            font-size: clamp(30px, 5vw, 54px);
-            line-height: 1.35;
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 22px;
-        }
-
-        .hero-title span {
-            color: var(--gold-light);
-            text-shadow: 0 2px 10px rgba(215, 173, 85, 0.3);
-        }
-
-        .hero-desc {
-            font-size: clamp(16px, 2vw, 20px);
-            margin-bottom: 35px;
-            opacity: 0.95;
-        }
-
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 14px 28px;
-            border-radius: var(--radius);
-            font-weight: 700;
-            text-decoration: none;
-            transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .btn-gold { background: var(--gold); color: var(--navy); box-shadow: 0 4px 15px rgba(215,173,85,0.4); }
-        .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
-        .btn-whatsapp { background: var(--green); color: white; box-shadow: 0 4px 15px rgba(37,211,102,0.4); }
-        .btn-whatsapp:hover { background: #1ebd58; transform: translateY(-2px); }
-
-        /* BANNER */
-        .banner {
-            background: var(--navy-light);
-            color: white;
-            text-align: center;
-            padding: 16px 20px;
-            border-bottom: 3px solid var(--gold);
-            font-weight: 700;
-            font-size: 16px;
-        }
-
-        /* CATEGORIES */
-        .sections-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            padding: 60px 0;
-        }
-
-        .cat-card {
-            background: white;
-            border-radius: var(--radius);
-            padding: 35px 20px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-            border: 1px solid rgba(7, 23, 43, 0.05);
-            cursor: pointer;
-            transition: 0.3s ease;
-        }
-
-        .cat-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--gold);
-            box-shadow: 0 15px 35px rgba(215, 173, 85, 0.15);
-        }
-
-        .cat-card h3 { color: var(--navy); font-size: 24px; margin-bottom: 12px; font-weight: 700; }
-        .cat-card p { color: var(--muted); font-size: 14px; }
-
-        /* MODAL / CART SYSTEM */
-        .modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(7, 23, 43, 0.6);
-            backdrop-filter: blur(5px);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            padding: 20px;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 35px;
-            border-radius: var(--radius);
-            width: 100%;
-            max-width: 500px;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            font-size: 24px;
-            cursor: pointer;
-            border: none;
-            background: none;
-            color: var(--muted);
-        }
-
-        .form-group {
-            margin-bottom: 18px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: 700;
-            color: var(--navy);
-            font-size: 14px;
-        }
-
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid rgba(7, 23, 43, 0.15);
-            border-radius: 8px;
             outline: none;
-            transition: 0.3s;
         }
 
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            border-color: var(--gold);
-        }
+        .cart-btn { background-color: #d7ad55; color: #07172b; border: none; padding: 10px 15px; border-radius: 8px; font-weight: 700; cursor: pointer; }
 
-        .warning-text {
-            color: var(--danger);
-            font-weight: bold;
-            margin: 12px 0;
-            display: none;
-            font-size: 14px;
+        /* القسم الرئيسي */
+        .hero {
+            background: linear-gradient(rgba(7, 23, 43, 0.8), rgba(7, 23, 43, 0.8)), url('store-hero.jpg') center/cover no-repeat;
+            min-height: 480px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #ffffff;
+            padding: 40px 20px;
         }
+        .hero h1 { font-size: 36px; font-weight: 900; margin-bottom: 15px; color: #ffffff; }
+        .hero h1 span { color: #f1d68d; }
+        .hero p { font-size: 18px; margin-bottom: 25px; max-width: 600px; opacity: 0.9; }
+        
+        .btn-group { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+        .btn { padding: 12px 25px; border-radius: 8px; font-weight: 700; text-decoration: none; display: inline-block; }
+        .btn-gold { background-color: #d7ad55; color: #07172b; }
+        .btn-whatsapp { background-color: #25d366; color: white; }
+
+        /* شريط التوصيل */
+        .banner { background-color: #0c223d; color: #ffffff; text-align: center; padding: 12px; font-weight: 700; border-bottom: 2px solid #d7ad55; }
+
+        /* الأقسام والمربعات */
+        .sections { padding: 60px 20px; max-width: 1100px; margin: 0 auto; }
+        .sections h2 { text-align: center; margin-bottom: 30px; color: #07172b; font-weight: 900; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .card { background: white; padding: 30px 20px; border-radius: 8px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eee; cursor: pointer; }
+        .card:hover { border-color: #d7ad55; transform: translateY(-3px); transition: 0.2s; }
+        .card h3 { color: #07172b; margin-bottom: 8px; }
+        .card p { color: #6d7684; font-size: 13px; }
+
+        /* نافذة السلة */
+        .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 2000; padding: 20px; }
+        .modal-content { background: white; padding: 25px; border-radius: 8px; width: 100%; max-width: 450px; position: relative; }
+        .close { position: absolute; top: 15px; left: 15px; font-size: 22px; cursor: pointer; border: none; background: none; }
+        
+        .form-group { margin-top: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 700; }
+        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; }
+        .warning { color: #c0392b; font-weight: bold; margin-top: 10px; display: none; font-size: 13px; }
 
         @media (max-width: 768px) {
-            .main-nav { display: none; }
-            .site-header { height: auto; padding: 12px 0; }
-            .brand-logo { width: 60px; height: 60px; }
-            .hero { min-height: 70vh; }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 28px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- HEADER -->
-    <header class="site-header">
-        <div class="container header-inner">
-            <div class="brand">
-                <img src="logo.png" alt="Caesar Markt" class="brand-logo">
-                <div class="brand-text">
-                    <span class="brand-name">CAESAR MARKT</span>
-                    <span class="brand-city">Neumünster</span>
-                </div>
-            </div>
-            <nav class="main-nav">
-                <a href="#home">الرئيسية</a>
-                <a href="#store">المتجر</a>
-                <a href="#home">من نحن</a>
-                <a href="#home">اتصل بنا</a>
+    <!-- الشريط العلوي مع منتقي اللغات ثلاثي الأبعاد -->
+    <header class="header">
+        <div class="brand">
+            <img src="logo.png" alt="Caesar" class="logo">
+            <span class="brand-name">CAESAR MARKT</span>
+        </div>
+        <div class="nav-right">
+            <nav class="nav-links">
+                <a href="#home" id="lnk-home">الرئيسية</a>
+                <a href="#store" id="lnk-store">الأقسام</a>
             </nav>
-            <button class="cart-button" onclick="toggleCart()">
+            <select class="lang-select" onchange="changeLanguage(this.value)">
+                <option value="de">Deutsch 🇩🇪</option>
+                <option value="ar">العربية 🇸🇦</option>
+                <option value="tr">Türkçe 🇹🇷</option>
+            </select>
+            <button class="cart-btn" onclick="openCart()">🛒 <span id="lbl-cart-btn">السلة</span> (<span id="cart-count">0</span>)</button>
+        </div>
+    </header>
+
+    <!-- القسم الرئيسي المترجم -->
+    <section class="hero" id="home">
+        <h1 id="hero-title">Willkommen bei <span>Caesar Markt</span></h1>
+        <p id="hero-desc">Ihr orientalischer und internationaler Supermarkt im Herzen von Neumünster. Qualität und Frische.</p>
+        <div class="btn-group">
+            <a href="#store" class="btn btn-gold" id="btn-browse">🛍 Shop durchsuchen</a>
+            <a href="https://wa.me" class="btn btn-whatsapp" id="btn-wa">💬 WhatsApp Direkt</a>
+        </div>
+    </section>
+
+    <!-- لافتة التوصيل الذكية بقيمة 40 يورو -->
+    <div class="banner" id="del-banner">
+        🚚 Lieferung nach Hause: Mindestbestellwert 40 € | Kostenlose Abholung im Geschäft möglich
+    </div>
+
+    <!-- الأقسام -->
+    <section class="sections" id="store">
+        <h2 id="sec-title">Kategorien durchsuchen</h2>
+        <div class="grid">
+            <div class="card" onclick="addItem('Oils', 'الزيوت والدهون', 'Sıvı Yağlar', 10)">
+                <h3 id="cat1-t">Öle & Fette</h3>
+                <p id="cat1-d">Klicken, um 10 € hinzuzufügen</p>
+            </div>
+            <div class="card" onclick="addItem('Spices', 'البهارات والتوابل', 'Baharatlar', 5)">
+                <h3 id="cat2-t">Gewürze</h3>
+                <p id="cat2-d">Klicken, um 5 € hinzuzufügen</p>
+            </div>
+            <div class="card" onclick="addItem('Rice', 'الأرز والبقوليات', 'Pirinç & Bakliyat', 8)">
+                <h3 id="cat3-t">Reis & Hülsenfrüchte</h3>
+                <p id="cat3-d">Klicken, um 8 € hinzuzufügen</p>
+            </div>
+            <div class="card" onclick="addItem('Meat', 'اللحوم الطازجة والحلال', 'Taze Et', 20)">
+                <h3 id="cat4-t">Frisches Fleisch</h3>
+                <p id="cat4-d">Klicken, um 20 € hinzuzufügen</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- السلة المنبثقة اللغات الثلاثة -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <button class="close" onclick="closeCart()">✕</button>
+            <h3 style="margin-bottom: 15px;" id="pop-title">🛒 Einkaufswagen</h3>
+            
+            <div id="cartItems" style="margin-bottom: 15px; max-height: 150px; overflow-y: auto;">
+                <p style="color: #6d7684;" id="cart-empty">Warenkorb ist leer.</p>
+            </div>
+
+            <p style="font-weight: 700; margin-bottom: 15px;"><span id="lbl-total">Gesamt</span>: <span id="totalPrice">0</span> €</p>
+
+            <div class="form-group">
+                <label id="lbl-method">Abholoptions:</label>
+                <select id="method" onchange="checkLogic()">
+                    <option value="pickup" id="opt-pickup">🏪 Im Geschäft abholen</option>
+                    <option value="delivery" id="opt-delivery">🚚 Lieferung nach Hause (Mindest. 40 €)</option>
+                </select>
+            </div>
+
+            <p class="warning" id="warningMsg">⚠ Für die Lieferung nach Hause muss die Bestellung mindestens 40 € betragen!</p>
+
+            <div class="form-group">
+                <label id="lbl-name">Name:</label>
+                <input type="text" id="name" placeholder="">
+            </div>
+            <div class="form-group">
+                <label id="lbl-phone">Telefonnummer:</label>
+                <input type="tel" id="phone" placeholder="">
+            </div>
+            <div class="form-group" id="addrGroup" style="display: none;">
+                <label id="lbl-address">Adresse:</label>
+                <input type="text" id="address" placeholder="">
+            </div>
+
+            <button class="btn btn-whatsapp" style="width: 100%; border: none; margin-top: 15px; cursor: pointer;" id="sendBtn" onclick="submitOrder()">
+                Bestellung über WhatsApp senden
+            </button>
+        </div>
+    </div>
+
+
 
