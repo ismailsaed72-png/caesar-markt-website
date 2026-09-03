@@ -1,370 +1,240 @@
- <!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caesar Markt Neumünster</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #0d1b2a; color: #ffffff; }
-
-        .top-bar {
-            background-color: #c5a059;
-            color: #000;
-            text-align: center;
-            padding: 8px 10px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        header {
-            background-color: #0b131f;
-            border-bottom: 2px solid #c5a059;
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .logo-box {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .crown-logo {
-            width: 50px;
-            height: auto;
-        }
-
-        .logo-title h1 {
-            color: #c5a059;
-            font-size: 24px;
-            letter-spacing: 1px;
-        }
-
-        .logo-title p {
-            color: #ccc;
-            font-size: 12px;
-        }
-
-        .lang-select select {
-            padding: 6px 12px;
-            border-radius: 4px;
-            background-color: #1b263b;
-            color: #fff;
-            border: 1px solid #c5a059;
-            cursor: pointer;
-        }
-
-        nav {
-            background-color: #1b263b;
-            padding: 12px 5%;
-            border-bottom: 1px solid #334155;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            cursor: pointer;
-        }
-
-        nav ul li a:hover {
-            color: #c5a059;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 15px;
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-
-        .section-title {
-            font-size: 26px;
-            color: #c5a059;
-        }
-
-        .back-btn {
-            background-color: #c5a059;
-            color: #000;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-            display: none;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background-color: #1b263b;
-            border: 1px solid #334155;
-            border-radius: 8px;
-            overflow: hidden;
-            text-align: center;
-            color: white;
-            transition: 0.3s;
-            cursor: pointer;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: #c5a059;
-        }
-
-        .card img {
-            width: 100%;
-            height: 170px;
-            object-fit: cover;
-            background-color: #0b131f;
-        }
-
-        .card h3 {
-            padding: 12px;
-            font-size: 15px;
-        }
-
-        .card .price {
-            color: #c5a059;
-            font-weight: bold;
-            padding-bottom: 12px;
-        }
-
-        footer {
-            background-color: #060c14;
-            color: #ccc;
-            padding: 40px 5% 20px 5%;
-            margin-top: 50px;
-            border-top: 2px solid #c5a059;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-col h4 {
-            color: #c5a059;
-            margin-bottom: 12px;
-            border-bottom: 1px solid #334155;
-            padding-bottom: 5px;
-        }
-
-        .footer-col p {
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 15px;
-            border-top: 1px solid #1b263b;
-            font-size: 13px;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071522">
+<title>Caesar Markt Neumünster</title>
+<style>
+:root{--bg:#061321;--bg2:#0b2034;--card:#102b44;--gold:#d9ae52;--gold2:#f4d57e;--white:#fff;--muted:#aebdcb;--line:rgba(244,213,126,.22)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,"Segoe UI",sans-serif;background:radial-gradient(circle at 50% -10%,#173654 0,#061321 45%);color:var(--white);min-height:100vh}
+body.lock{overflow:hidden}
+button,input,select{font:inherit}button{cursor:pointer}img{max-width:100%;display:block}
+.top{background:linear-gradient(90deg,#9a7025,#f4d57e,#9a7025);color:#111;text-align:center;padding:8px 14px;font-weight:800;font-size:14px}
+header{position:sticky;top:0;z-index:1000;background:rgba(4,15,27,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.head{width:min(1250px,92%);min-height:86px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:#fff}
+.brand img{width:68px;height:68px;object-fit:contain;filter:drop-shadow(0 5px 15px rgba(244,213,126,.28))}
+.brand h1{font:700 clamp(22px,3vw,31px) Georgia,serif;color:var(--gold2);letter-spacing:.06em}
+.brand p{color:var(--muted);font-size:12px;margin-top:4px}
+.tools{display:flex;gap:8px;align-items:center}
+select,.iconbtn{background:#0c263e;color:#fff;border:1px solid var(--gold);border-radius:11px;padding:9px 12px}
+.iconbtn{display:flex;align-items:center;gap:6px}
+.badge{background:#111;color:var(--gold2);border-radius:50%;min-width:21px;height:21px;display:grid;place-items:center;font-size:12px}
+nav{border-bottom:1px solid rgba(255,255,255,.06);background:#0b2034}
+.nav{width:min(1250px,92%);margin:auto;display:flex;gap:5px;overflow:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav button{border:0;background:none;color:#dbe6ef;padding:13px 16px;border-bottom:2px solid transparent;white-space:nowrap}
+.nav button:hover,.nav button.active{color:var(--gold2);border-color:var(--gold)}
+.hero{width:min(1250px,92%);margin:25px auto 0;min-height:400px;border:1px solid var(--line);border-radius:26px;overflow:hidden;position:relative;display:flex;align-items:center;background:linear-gradient(90deg,rgba(2,9,16,.97),rgba(2,9,16,.68),rgba(2,9,16,.25)),url("https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1800&q=85") center/cover;box-shadow:0 25px 70px rgba(0,0,0,.35)}
+.hero .content{padding:40px;max-width:760px}
+.pill{display:inline-block;border:1px solid var(--gold);color:var(--gold2);border-radius:999px;padding:7px 12px;background:rgba(0,0,0,.2);font-size:13px}
+.hero h2{font:700 clamp(34px,6vw,68px) Georgia,serif;margin:15px 0 10px}
+.hero p{color:#d5e0e9;line-height:1.9;max-width:650px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.primary,.secondary{border-radius:11px;padding:12px 18px;font-weight:800;border:1px solid var(--gold)}
+.primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#111}
+.secondary{background:rgba(4,18,31,.72);color:#fff}
+main{width:min(1250px,92%);margin:48px auto}
+.heading{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:18px}
+.heading h2{color:var(--gold2);font:700 clamp(25px,4vw,37px) Georgia,serif}
+.heading p{color:var(--muted);font-size:14px}
+.searchbar{display:flex;gap:9px;margin:0 0 20px}
+.searchbar input{flex:1;background:#0c263e;color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px 14px;outline:none}
+.searchbar input:focus{border-color:var(--gold)}
+.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cat{position:relative;height:265px;overflow:hidden;border-radius:20px;background:#0c2237;border:1px solid rgba(255,255,255,.08);cursor:pointer;transition:.35s}
+.cat:hover{transform:translateY(-7px);border-color:var(--gold);box-shadow:0 20px 45px rgba(0,0,0,.3)}
+.cat img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.cat:hover img{transform:scale(1.06)}
+.cat .shade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(1,8,14,.96),rgba(1,8,14,.02) 72%);padding:20px;display:flex;flex-direction:column;justify-content:end}
+.cat h3{font-size:20px}.cat span{color:var(--gold2);font-size:13px;margin-top:6px}
+.info{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:45px}
+.info article{background:#0b2238;border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:24px}
+.info h3{color:var(--gold2);margin-bottom:10px}.info p{color:#c6d3de;line-height:1.9}
+footer{margin-top:60px;background:#030b13;border-top:1px solid var(--line);padding:40px 0 18px}
+.foot{width:min(1250px,92%);margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.foot h3{color:var(--gold2);margin-bottom:10px}.foot p{color:var(--muted);line-height:1.9}
+.copy{text-align:center;color:#738392;border-top:1px solid rgba(255,255,255,.06);margin-top:28px;padding-top:15px;font-size:12px}
+.modal{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.78);backdrop-filter:blur(9px);display:none;align-items:center;justify-content:center;padding:14px}
+.modal.show{display:flex}
+.box{width:min(1120px,97vw);max-height:92vh;overflow:auto;background:linear-gradient(#0d263e,#071522);border:1px solid var(--line);border-radius:22px;box-shadow:0 30px 90px #000}
+.mhead{position:sticky;top:0;z-index:2;background:rgba(7,21,34,.95);backdrop-filter:blur(12px);display:flex;justify-content:space-between;align-items:center;padding:17px 19px;border-bottom:1px solid rgba(255,255,255,.07)}
+.mhead h2{color:var(--gold2);font:700 27px Georgia,serif}
+.close{width:42px;height:42px;border-radius:50%;border:1px solid var(--gold);background:transparent;color:#fff;font-size:25px}
+.products{padding:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.product{background:#102b44;border:1px solid rgba(255,255,255,.07);border-radius:15px;overflow:hidden;transition:.3s}
+.product:hover{transform:translateY(-4px);border-color:var(--gold)}
+.product img{width:100%;height:160px;object-fit:cover}
+.product .body{padding:13px}.product h3{font-size:15px;line-height:1.5;min-height:46px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px}
+.price{color:var(--gold2);font-weight:900}.add{border:1px solid var(--gold);background:transparent;color:#fff;border-radius:9px;padding:7px 9px}
+.add:hover{background:var(--gold);color:#111}
+.drawer{position:fixed;inset:0;z-index:2500;display:none;background:rgba(0,0,0,.7)}
+.drawer.show{display:block}
+.cartpanel{position:absolute;top:0;bottom:0;width:min(420px,94vw);background:#081a2b;padding:20px;overflow:auto;box-shadow:0 0 60px #000}
+html[dir="ltr"] .cartpanel{right:0}html[dir="rtl"] .cartpanel{left:0}
+.cartpanel h2{color:var(--gold2);margin-bottom:15px}.cartempty{color:var(--muted);padding:30px 0}
+.cartline{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid rgba(255,255,255,.08);padding:12px 0}
+.checkout{width:100%;margin-top:15px;padding:12px;border:0;border-radius:11px;background:linear-gradient(135deg,var(--gold),var(--gold2));font-weight:900}
+.toast{position:fixed;z-index:4000;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;background:var(--gold2);color:#111;padding:11px 17px;border-radius:11px;font-weight:800;transition:.3s;pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:900px){.categories{grid-template-columns:repeat(2,1fr)}.products{grid-template-columns:repeat(3,1fr)}.foot{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.head{min-height:75px}.brand img{width:52px;height:52px}.brand p{display:none}.brand h1{font-size:21px}.hero{min-height:430px}.hero .content{padding:25px}.categories,.info,.foot{grid-template-columns:1fr}.products{grid-template-columns:repeat(2,1fr);padding:12px;gap:10px}.product img{height:135px}.modal{padding:6px}.box{max-height:95vh}.heading{display:block}.heading p{margin-top:6px}}
+</style>
 </head>
 <body>
+<div class="top" id="announcement"></div>
 
-    <div class="top-bar" id="top-announcement">
-        نقبل الحجز والتوصيل إلى المنزل في حدود المدينة (الحد الأدنى للطلب 40 يورو)
-    </div>
+<header>
+ <div class="head">
+  <a class="brand" href="#" onclick="home(event)">
+   <img src="logo.png" alt="Caesar Markt">
+   <div><h1>CAESAR MARKT</h1><p id="brandSub"></p></div>
+  </a>
+  <div class="tools">
+   <select id="lang" aria-label="Language">
+    <option value="ar">العربية</option><option value="de">Deutsch</option><option value="tr">Türkçe</option>
+   </select>
+   <button class="iconbtn" onclick="openCart()">🛒 <span id="cartLabel"></span> <b class="badge" id="count">0</b></button>
+  </div>
+ </div>
+</header>
 
-    <header>
-        <div class="logo-box">
-            <svg class="crown-logo" viewBox="0 0 100 100" fill="#c5a059">
-                <path d="M10 80 L90 80 L85 30 L65 50 L50 20 L35 50 L15 30 Z" />
-                <circle cx="50" cy="12" r="5" />
-                <circle cx="15" cy="22" r="4" />
-                <circle cx="85" cy="22" r="4" />
-            </svg>
-            <div class="logo-title">
-                <h1>CAESAR MARKT</h1>
-                <p>Orientalische Lebensmittel, Fleischerei, Shisha, Tabak und Vapes</p>
-            </div>
-        </div>
-        <div class="lang-select">
-            <select id="langSwitcher" onchange="changeLanguage(this.value)">
-                <option value="ar">العربية (Arabic)</option>
-                <option value="de">Deutsch (German)</option>
-                <option value="tr">Türkçe (Turkish)</option>
-            </select>
-        </div>
-    </header>
+<nav><div class="nav">
+ <button class="active" onclick="home()" id="nHome"></button>
+ <button onclick="to('shop')" id="nShop"></button>
+ <button onclick="to('about')" id="nAbout"></button>
+ <button onclick="to('contact')" id="nContact"></button>
+</div></nav>
 
-    <nav>
-        <ul>
-            <li><a onclick="showCategories()" id="nav-home">الرئيسية</a></li>
-            <li><a onclick="showCategories()" id="nav-store">المتجر</a></li>
-            <li><a id="nav-about">من نحن</a></li>
-            <li><a id="nav-contact">اتصل بنا</a></li>
-        </ul>
-    </nav>
+<section class="hero">
+ <div class="content">
+  <span class="pill">👑 <span id="heroBadge"></span></span>
+  <h2 id="heroTitle"></h2>
+  <p id="heroText"></p>
+  <div class="actions"><button class="primary" onclick="to('shop')" id="heroShop"></button><button class="secondary" onclick="to('contact')" id="heroContact"></button></div>
+ </div>
+</section>
 
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title" id="main-heading">الأقسام الرئيسية</h2>
-            <button class="back-btn" id="backBtn" onclick="showCategories()">← العودة للرئيسية</button>
-        </div>
-        <div class="grid" id="contentGrid"></div>
-    </div>
+<main id="shop">
+ <div class="heading"><div><h2 id="sectionTitle"></h2><p id="hint"></p></div></div>
+ <div class="searchbar"><input id="search" type="search" placeholder=""></div>
+ <div class="categories" id="categories"></div>
 
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4 id="foot-hours-title">مواعيد العمل</h4>
-                <p>Montag – Samstag: 08:30 – 20:00 Uhr</p>
-                <p id="foot-closed">Sonntag: Geschlossen (الأحد مغلق)</p>
-            </div>
-            <div class="footer-col">
-                <h4 id="foot-address-title">العنوان والاتصال</h4>
-                <p><strong>CAESAR MARKT</strong></p>
-                <p>Großflecken 19, 24534 Neumünster</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            &copy; 2026 CAESAR MARKT NEUMÜNSTER - جميع الحقوق محفوظة
-        </div>
-    </footer>
+ <div class="info">
+  <article id="about"><h3 id="aboutTitle"></h3><p id="aboutText"></p></article>
+  <article id="contact"><h3 id="contactTitle"></h3><p id="contactText"></p></article>
+ </div>
+</main>
 
-    <script>
-        const storeData = {
-            ar: {
-                title: "الأقسام الرئيسية",
-                back: "← العودة للأقسام",
-                announcement: "نقبل الحجز والتوصيل إلى المنزل في حدود المدينة (الحد الأدنى للطلب 40 يورو)",
-                navHome: "الرئيسية", navStore: "المتجر", navAbout: "من نحن", navContact: "اتصل بنا",
-                hoursTitle: "مواعيد العمل", closed: "Sonntag: Geschlossen (الأحد مغلق)", addressTitle: "العنوان والاتصال",
-                categories: [
-                    { id: "veg", name: "الخضار الطازجة", img: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400", items: [{ name: "طماطم طازجة", price: "1.99 € / كغ" }, { name: "خيار بلدية", price: "1.49 € / كغ" }, { name: "نعناع طازج", price: "0.79 € / باقة" }] },
-                    { id: "cheese", name: "الأجبان والألبان", img: "https://images.unsplash.com/photo-1528751014936-863e6e7a319c?w=400", items: [{ name: "جبنة حلوم", price: "3.49 €" }, { name: "لبنة بلدية", price: "2.99 €" }, { name: "جبنة بيضاء بلدية", price: "4.99 € / كغ" }] },
-                    { id: "meat", name: "اللحوم الطازجة (Fleischerei)", img: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=400", items: [{ name: "صدر دجاج طازج (10 كيلو)", price: "59.99 €" }, { name: "لحم خاروف بعظمه", price: "12.99 € / كغ" }, { name: "لحم عجل مفروم", price: "9.99 € / كغ" }] },
-                    { id: "shisha", name: "Shisha, Tabak und Vapes", img: "https://images.unsplash.com/photo-1527016016007-57a1990621cd?w=400", items: [{ name: "معسل فاخر (أنواع مختلفة)", price: "17.90 €" }, { name: "فيب سحبة جاهزة (Vape)", price: "9.99 €" }, { name: "فحم نرجيلة طبيعي", price: "6.50 €" }] },
-                    { id: "legumes", name: "البقوليات والحبوب", img: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400", items: [{ name: "أرز بسمتي فاخر 5 كغ", price: "11.99 €" }, { name: "عدس أحمر 1 كغ", price: "2.29 €" }, { name: "حمص حب 1 كغ", price: "2.49 €" }] },
-                    { id: "pickles", name: "المقبلات والمخللات", img: "https://images.unsplash.com/photo-1599940824399-b87987ceb72a?w=400", items: [{ name: "مخلل خيار بلدي", price: "2.99 €" }, { name: "مقدوس باذنجان", price: "4.50 €" }, { name: "زيتون أخضر مجروح", price: "3.99 € / كغ" }] }
-                ]
-            },
-            de: {
-                title: "Hauptkategorien",
-                back: "← Zurück zu Kategorien",
-                announcement: "Lieferservice im Stadtgebiet verfügbar (Mindestbestellwert 40 €)",
-                navHome: "Startseite", navStore: "Geschäft", navAbout: "Über uns", navContact: "Kontakt",
-                hoursTitle: "Öffnungszeiten", closed: "Sonntag: Geschlossen", addressTitle: "Adresse & Kontakt",
-                categories: [
-                    { id: "veg", name: "Frisches Gemüse", img: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400", items: [{ name: "Frische Tomaten", price: "1.99 € / kg" }, { name: "Gurken", price: "1.49 € / kg" }] },
-                    { id: "cheese", name: "Käse & Milchprodukte", img: "https://images.unsplash.com/photo-1528751014936-863e6e7a319c?w=400", items: [{ name: "Halloumi Käse", price: "3.49 €" }, { name: "Labneh", price: "2.99 €" }] },
-                    { id: "meat", name: "Fleischerei", img: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=400", items: [{ name: "Hähnchenbrust 10 KG", price: "59.99 €" }, { name: "Lammfleisch", price: "12.99 € / kg" }] },
-                    { id: "shisha", name: "Shisha, Tabak & Vapes", img: "https://images.unsplash.com/photo-1527016016007-57a1990621cd?w=400", items: [{ name: "Shisha Tabak", price: "17.90 €" }, { name: "Einweg Vapes", price: "9.99 €" }] },
-                    { id: "legumes", name: "Hülsenfrüchte & Reis", img: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400", items: [{ name: "Basmati Reis 5kg", price: "11.99 €" }] },
-                    { id: "pickles", name: "Feinkost & Oliven", img: "https://images.unsplash.com/photo-1599940824399-b87987ceb72a?w=400", items: [{ name: "Grüne Oliven", price: "3.99 € / kg" }] }
-                ]
-            },
-            tr: {
-                title: "Ana Kategoriler",
-                back: "← Kategorilere Geri Dön",
-                announcement: "Şehir içi eve teslimat mevcuttur (Minimum sipariş 40 €)",
-                navHome: "Ana Sayfa", navStore: "Mağaza", navAbout: "Hakkımızda", navContact: "İletişim",
-                hoursTitle: "Calışma Saatleri", closed: "Pazar: Kapalı", addressTitle: "Adres ve İletişim",
-                categories: [
-                    { id: "veg", name: "Taze Sebzeler", img: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400", items: [{ name: "Taze Domates", price: "1.99 € / kg" }] },
-                    { id: "cheese", name: "Peynir & Süt Ürünleri", img: "https://images.unsplash.com/photo-1528751014936-863e6e7a319c?w=400", items: [{ name: "Hellim Peyniri", price: "3.49 €" }] },
-                    { id: "meat", name: "Kasap (Fleischerei)", img: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=400", items: [{ name: "Tavuk Göğsü 10 KG", price: "59.99 €" }] },
-                    { id: "shisha", name: "Nargile, Tütün & Vape", img: "https://images.unsplash.com/photo-1527016016007-57a1990621cd?w=400", items: [{ name: "Nargile Tütünü", price: "17.90 €" }] },
-                    { id: "legumes", name: "Bakliyat & Pirinç", img: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400", items: [{ name: "Basmati Pirinç 5kg", price: "11.99 €" }] },
-                    { id: "pickles", name: "Zeytin ve Turşular", img: "https://images.unsplash.com/photo-1599940824399-b87987ceb72a?w=400", items: [{ name: "Yeşil Zeytin", price: "3.99 € / kg" }] }
-                ]
-            }
-        };
+<footer>
+ <div class="foot">
+  <div><h3 id="hoursTitle"></h3><p id="hours"></p></div>
+  <div><h3 id="addressTitle"></h3><p>CAESAR MARKT<br>Großflecken 19<br>24534 Neumünster</p></div>
+  <div><h3 id="serviceTitle"></h3><p id="service"></p></div>
+ </div>
+ <div class="copy">© 2026 CAESAR MARKT NEUMÜNSTER — <span id="rights"></span></div>
+</footer>
 
-        let currentLang = 'ar';
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
+ <div class="box">
+  <div class="mhead"><h2 id="modalTitle"></h2><button class="close" onclick="closeModal()">×</button></div>
+  <div class="products" id="products"></div>
+ </div>
+</div>
 
-        function changeLanguage(lang) {
-            currentLang = lang;
-            document.dir = lang === 'ar' ? 'rtl' : 'ltr';
-            
-            const data = storeData[lang];
-            document.getElementById('top-announcement').innerText = data.announcement;
-            document.getElementById('nav-home').innerText = data.navHome;
-            document.getElementById('nav-store').innerText = data.navStore;
-            document.getElementById('nav-about').innerText = data.navAbout;
-            document.getElementById('nav-contact').innerText = data.navContact;
-            document.getElementById('foot-hours-title').innerText = data.hoursTitle;
-            document.getElementById('foot-closed').innerText = data.closed;
-            document.getElementById('foot-address-title').innerText = data.addressTitle;
+<div class="drawer" id="drawer" onclick="if(event.target===this)closeCart()">
+ <aside class="cartpanel">
+  <div class="mhead" style="position:static;margin:-20px -20px 15px"><h2 id="cartTitle"></h2><button class="close" onclick="closeCart()">×</button></div>
+  <div id="cartItems"></div>
+  <button class="checkout" onclick="sendOrder()" id="checkout"></button>
+ </aside>
+</div>
+<div class="toast" id="toast"></div>
 
-            showCategories();
-        }
+<script>
+const I={
+ veg:["https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=900&q=80","https://images.unsplash.com/photo-1561136594-7f68413baa99?auto=format&fit=crop&w=900&q=80"],
+ cheese:["https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=900&q=80","https://images.unsplash.com/photo-1628088062854-d1870b4553da?auto=format&fit=crop&w=900&q=80"],
+ meat:["https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=900&q=80","https://images.unsplash.com/photo-1588347818036-558601350947?auto=format&fit=crop&w=900&q=80"],
+ shisha:["https://images.unsplash.com/photo-1527016016007-57a1990621cd?auto=format&fit=crop&w=900&q=80","https://images.unsplash.com/photo-1603905179139-db12ab535a99?auto=format&fit=crop&w=900&q=80"],
+ rice:["https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=900&q=80","https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=900&q=80"],
+ olives:["https://images.unsplash.com/photo-1599940824399-b87987ceb72a?auto=format&fit=crop&w=900&q=80","https://images.unsplash.com/photo-1601314002592-28f17c1a9f57?auto=format&fit=crop&w=900&q=80"]
+};
+const base=[
+ ["veg","vegetables",["طماطم طازجة","خيار بلدي","نعناع طازج","بقدونس طازج","باذنجان","فلفل أخضر","كوسا","بطاطا","بصل أحمر","ليمون طازج"],["1.99 € / كغ","1.49 € / كغ","0.79 € / باقة","0.79 € / باقة","2.49 € / كغ","2.99 € / كغ","2.29 € / كغ","1.69 € / كغ","1.59 € / كغ","2.49 € / كغ"]],
+ ["cheese","cheese",["جبنة حلوم","لبنة","جبنة بيضاء","جبنة عكاوي","قشقوان","فيتا","زبادي طبيعي","عيران","قشطة","زبدة بلدية"],["3.49 €","2.99 €","4.99 € / كغ","6.99 € / كغ","7.99 € / كغ","3.49 €","1.79 €","1.49 €","2.99 €","3.99 €"]],
+ ["meat","meat",["صدر دجاج 10 كغ","لحم خاروف بعظمه","لحم عجل مفروم","أفخاذ دجاج","أجنحة دجاج","ريش خاروف","لحم عجل شرائح","كفتة","سجق شرقي","كبدة عجل"],["59.99 €","12.99 € / كغ","9.99 € / كغ","5.99 € / كغ","4.99 € / كغ","16.99 € / كغ","13.99 € / كغ","11.99 € / كغ","10.99 € / كغ","9.99 € / كغ"]],
+ ["shisha","shisha",["معسل تفاحتين","معسل نعناع","معسل عنب","فحم نرجيلة طبيعي","رؤوس شيشة","ملقط فحم","خرطوم شيشة","فيب سحبة جاهزة","نكهات شيشة","إكسسوارات شيشة"],["17.90 €","17.90 €","17.90 €","6.50 €","4.99 €","2.99 €","7.99 €","9.99 €","17.90 €","ابتداءً من 3.99 €"]],
+ ["rice","rice",["أرز بسمتي 5 كغ","عدس أحمر 1 كغ","حمص حب 1 كغ","فاصوليا بيضاء 1 كغ","برغل ناعم 1 كغ","برغل خشن 1 كغ","أرز مصري 1 كغ","فول يابس 1 كغ","عدس أخضر 1 كغ","فريكة 1 كغ"],["11.99 €","2.29 €","2.49 €","3.49 €","2.49 €","2.49 €","2.29 €","2.79 €","2.69 €","4.99 €"]],
+ ["olives","olives",["مخلل خيار","مقدوس باذنجان","زيتون أخضر","زيتون أسود","زيتون أخضر محشو","ورق عنب","فلفل مخلل","لفت مخلل","طرشي مشكل","زيتون كالاماتا"],["2.99 €","4.50 €","3.99 € / كغ","4.49 € / كغ","5.49 € / كغ","3.99 €","2.99 €","2.49 €","3.99 €","5.99 € / كغ"]]
+];
+const T={
+ar:{announcement:"التوصيل داخل Neumünster متاح — الحد الأدنى 40 €",sub:"أغذية شرقية • ملحمة • شيشة • تبغ • Vapes",nav:["الرئيسية","المتجر","من نحن","اتصل بنا"],cart:"السلة",badge:"مرحباً بكم في قيصر ماركت",hero:"جودة شرقية بطابع ملكي",text:"تصفح أقسامنا الرئيسية واضغط على أي قسم لفتح 10 منتجات فرعية مع الصور والأسعار.",shop:"تصفح المنتجات",contact:"تواصل معنا",title:"الأقسام الرئيسية",hint:"اضغط على القسم لعرض المنتجات • استخدم البحث للوصول السريع",search:"ابحث عن منتج أو قسم...",about:"من نحن",aboutText:"Caesar Markt Neumünster متخصص في المنتجات الشرقية والخضار الطازجة والأجبان واللحوم والبقوليات والمخللات ومنتجات الشيشة والتبغ.",contactTitle:"العنوان والاتصال",contactText:"Großflecken 19, 24534 Neumünster — للتوصيل والحجز تواصل مع المتجر مباشرة.",hours:"مواعيد العمل",hoursText:"الاثنين – السبت: 08:30 – 20:00<br>الأحد: مغلق",address:"العنوان",service:"الخدمة",serviceText:"توصيل داخل المدينة — الحد الأدنى للطلب 40 €.",rights:"جميع الحقوق محفوظة",add:"إضافة",added:"تمت إضافة المنتج إلى السلة",cartTitle:"سلة الطلب",checkout:"إرسال الطلب عبر WhatsApp",empty:"السلة فارغة حالياً.",count:"10 منتجات"},
+de:{announcement:"Lieferung in Neumünster — Mindestbestellwert 40 €",sub:"Orientalische Lebensmittel • Fleischerei • Shisha • Tabak • Vapes",nav:["Startseite","Geschäft","Über uns","Kontakt"],cart:"Warenkorb",badge:"Willkommen bei Caesar Markt",hero:"Orientalische Qualität mit königlichem Stil",text:"Kategorien öffnen und 10 Unterprodukte mit Bildern und Preisen entdecken.",shop:"Produkte ansehen",contact:"Kontakt",title:"Hauptkategorien",hint:"Kategorie anklicken • Suche für schnellen Zugriff",search:"Produkt oder Kategorie suchen...",about:"Über uns",aboutText:"Caesar Markt Neumünster bietet orientalische Lebensmittel, frisches Gemüse, Käse, Fleisch, Hülsenfrüchte, Feinkost sowie Shisha- und Tabakwaren.",contactTitle:"Adresse & Kontakt",contactText:"Großflecken 19, 24534 Neumünster — für Lieferung und Bestellung direkt den Markt kontaktieren.",hours:"Öffnungszeiten",hoursText:"Montag – Samstag: 08:30 – 20:00 Uhr<br>Sonntag: Geschlossen",address:"Adresse",service:"Service",serviceText:"Lieferung im Stadtgebiet — Mindestbestellwert 40 €.",rights:"Alle Rechte vorbehalten",add:"Hinzufügen",added:"Produkt wurde zum Warenkorb hinzugefügt",cartTitle:"Bestellkorb",checkout:"Bestellung per WhatsApp senden",empty:"Der Warenkorb ist leer.",count:"10 Produkte"},
+tr:{announcement:"Neumünster şehir içi teslimat — minimum 40 €",sub:"Doğu Gıdaları • Kasap • Nargile • Tütün • Vape",nav:["Ana Sayfa","Mağaza","Hakkımızda","İletişim"],cart:"Sepet",badge:"Caesar Markt'a Hoş Geldiniz",hero:"Kraliyet tarzında doğu lezzetleri",text:"Ana kategorileri açın ve görsel/fiyatlarla 10 alt ürünü keşfedin.",shop:"Ürünleri Gör",contact:"İletişim",title:"Ana Kategoriler",hint:"Kategoriye tıklayın • hızlı erişim için aramayı kullanın",search:"Ürün veya kategori ara...",about:"Hakkımızda",aboutText:"Caesar Markt Neumünster; doğu gıdaları, taze sebzeler, peynir, et, bakliyat, turşu, zeytin ve nargile-tütün ürünleri sunar.",contactTitle:"Adres & İletişim",contactText:"Großflecken 19, 24534 Neumünster — teslimat ve sipariş için mağazayla iletişime geçin.",hours:"Çalışma Saatleri",hoursText:"Pazartesi – Cumartesi: 08:30 – 20:00<br>Pazar: Kapalı",address:"Adres",service:"Hizmet",serviceText:"Şehir içi teslimat — minimum sipariş 40 €.",rights:"Tüm hakları saklıdır",add:"Ekle",added:"Ürün sepete eklendi",cartTitle:"Sepet",checkout:"WhatsApp ile sipariş gönder",empty:"Sepet boş.",count:"10 ürün"}
+};
+const NAMES={
+ar:["الخضار الطازجة","الأجبان والألبان","اللحوم الطازجة — ملحمة","شيشة • تبغ • Vapes","البقوليات والحبوب والأرز","المقبلات والمخللات والزيتون"],
+de:["Frisches Gemüse","Käse & Milchprodukte","Fleischerei","Shisha • Tabak • Vapes","Hülsenfrüchte, Getreide & Reis","Feinkost, Oliven & Pickles"],
+tr:["Taze Sebzeler","Peynir & Süt Ürünleri","Kasap","Nargile • Tütün • Vape","Bakliyat, Tahıl & Pirinç","Zeytin, Turşu & Meze"]
+};
+let lang=localStorage.getItem("cmLang")||"ar",cart=JSON.parse(localStorage.getItem("cmCart")||"[]");
 
-        function showCategories() {
-            const data = storeData[currentLang];
-            document.getElementById('main-heading').innerText = data.title;
-            document.getElementById('backBtn').style.display = 'none';
-
-            const grid = document.getElementById('contentGrid');
-            grid.innerHTML = '';
-
-            data.categories.forEach(cat => {
-                grid.innerHTML += `
-                    <div class="card" onclick="showSubItems('${cat.id}')">
-                        <img src="${cat.img}" alt="${cat.name}">
-                        <h3>${cat.name}</h3>
-                    </div>
-                `;
-            });
-        }
-
-        function showSubItems(catId) {
-            const data = storeData[currentLang];
-            const category = data.categories.find(c => c.id === catId);
-            
-            if(!category) return;
-
-            document.getElementById('main-heading').innerText = category.name;
-            const backBtn = document.getElementById('backBtn');
-            backBtn.innerText = data.back;
-            backBtn.style.display = 'block';
-
-            const grid = document.getElementById('contentGrid');
-            grid.innerHTML = '';
-
-            category.items.forEach(item => {
-                grid.innerHTML += `
-                    <div class="card" style="cursor: default;">
-                        <img src="${category.img}" alt="${item.name}">
-                        <h3>${item.name}</h3>
-                        <div class="price">${item.price}</div>
-                    </div>
-                `;
-            });
-        }
-
-        // تشغيل البداية
-        showCategories();
-    </script>
+function apply(){
+ const t=T[lang]; document.documentElement.lang=lang;document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+ const ids={announcement:t.announcement,brandSub:t.sub,nHome:t.nav[0],nShop:t.nav[1],nAbout:t.nav[2],nContact:t.nav[3],cartLabel:t.cart,heroBadge:t.badge,heroTitle:t.hero,heroText:t.text,heroShop:t.shop,heroContact:t.contact,sectionTitle:t.title,hint:t.hint,aboutTitle:t.about,aboutText:t.aboutText,contactTitle:t.contactTitle,contactText:t.contactText,hoursTitle:t.hours,addressTitle:t.address,serviceTitle:t.service,service:t.serviceText,rights:t.rights,cartTitle:t.cartTitle,checkout:t.checkout};
+ Object.entries(ids).forEach(([id,v])=>$(id).textContent=v);
+ $("hours").innerHTML=t.hoursText;$("search").placeholder=t.search;$("count").textContent=cart.length;
+ renderCats($("search").value);
+}
+function renderCats(q=""){
+ const query=q.trim().toLowerCase();
+ $("categories").innerHTML=base.map((c,i)=>{
+   const name=NAMES[lang][i];
+   if(query && !(name+" "+c[2].join(" ")).toLowerCase().includes(query))return "";
+   return `<article class="cat" onclick="openCategory(${i})"><img src="${I[c[1]][0]}" loading="lazy" alt="${esc(name)}"><div class="shade"><h3>${esc(name)}</h3><span>${T[lang].count} →</span></div></article>`;
+ }).join("") || `<p style="color:var(--muted);padding:20px">لا توجد نتائج.</p>`;
+}
+function openCategory(i){
+ const c=base[i],name=NAMES[lang][i],t=T[lang];
+ $("modalTitle").textContent=name;
+ $("products").innerHTML=c[2].map((p,j)=>`<article class="product"><img src="${I[c[1]][j%2]}" loading="lazy" alt="${esc(p)}"><div class="body"><h3>${esc(p)}</h3><div class="row"><span class="price">${c[3][j]}</span><button class="add" onclick="add(${i},${j})">+ ${t.add}</button></div></div></article>`).join("");
+ $("modal").classList.add("show");document.body.classList.add("lock");
+}
+function closeModal(){$("modal").classList.remove("show");document.body.classList.remove("lock")}
+function add(ci,pi){
+ cart.push({ci,pi});save();showToast(T[lang].added);renderCart();
+}
+function save(){localStorage.setItem("cmCart",JSON.stringify(cart));$("count").textContent=cart.length}
+function openCart(){renderCart();$("drawer").classList.add("show")}
+function closeCart(){$("drawer").classList.remove("show")}
+function renderCart(){
+ const t=T[lang];
+ if(!cart.length){$("cartItems").innerHTML=`<div class="cartempty">${t.empty}</div>`;return}
+ $("cartItems").innerHTML=cart.map((x,k)=>{let c=base[x.ci];return `<div class="cartline"><span>${esc(c[2][x.pi])}</span><b>${c[3][x.pi]}</b><button onclick="removeCart(${k})" style="background:none;border:0;color:#f77">×</button></div>`}).join("");
+}
+function removeCart(k){cart.splice(k,1);save();renderCart()}
+function sendOrder(){
+ if(!cart.length)return;
+ const lines=cart.map(x=>{let c=base[x.ci];return `${c[2][x.pi]} — ${c[3][x.pi]}`}).join("\n");
+ // ضع رقم واتساب المتجر هنا بصيغة دولية، مثال: 491234567890
+ const WHATSAPP_NUMBER="491234567890";
+ const text=encodeURIComponent(`Caesar Markt Neumünster\n\n${lines}\n\n${lang==="ar"?"أرغب في تأكيد الطلب والتوصيل.":"Ich möchte die Bestellung und Lieferung bestätigen."}`);
+ window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`,"_blank");
+}
+function to(id){$(id).scrollIntoView({behavior:"smooth",block:"start"})}
+function home(e){if(e)e.preventDefault();window.scrollTo({top:0,behavior:"smooth"})}
+function $(id){return document.getElementById(id)}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function showToast(s){$("toast").textContent=s;$("toast").classList.add("show");clearTimeout(window.tt);window.tt=setTimeout(()=>$("toast").classList.remove("show"),1800)}
+$("lang").addEventListener("change",e=>{lang=e.target.value;localStorage.setItem("cmLang",lang);apply();renderCart()});
+$("search").addEventListener("input",e=>renderCats(e.target.value));
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeModal();closeCart()}})
+apply();
+</script>
 </body>
-</html>
+</html> 
